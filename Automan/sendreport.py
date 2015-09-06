@@ -78,7 +78,7 @@ def generatehtml():
         host='localhost',
         port=3306,
         user='root',
-        passwd='lulei1020',
+        passwd='*****',
         db='test',
         use_unicode=True,
         charset="utf8",

@@ -54,9 +54,6 @@ def testcase_H5_PlaceOrder():
 
     PageImp.Page_PersonalCenter.Page_PersonalCenter.OrderListToSelect.Click()
 
-    # swipe_args = {'startX': 0.5, 'startY': 0.5, 'endX': 0.5, 'endY': 0.1, 'duration': 10}
-    # PublicImp.env.driver.execute_script("mobile: swipe", swipe_args)
-
     PageImp.Page_OrderDetails.Page_OrderDetails.Address.Click()
 
     PageImp.Page_OrderDetails.Page_OrderDetails.CancelOrder.Click()

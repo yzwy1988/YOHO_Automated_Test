@@ -9,11 +9,13 @@ class Login_And_out():
 
     @classmethod
     def login(cls, account=None, password=None):
-        sleep(10)
+
         PageImp.Page_HomeGuide.Page_HomeGuide.GoBoys.Click()
-        sleep(10)
+
+        if PageImp.Page_Home.Page_Home.Float_Layer_Close.IsExist():
+            PageImp.Page_Home.Page_Home.Float_Layer_Close.Click()
+
         PageImp.Page_Home.Page_Home.UserLogin.Click()
-        sleep(2)
 
         # if PageImp.Page_Login.Page_Login.Login_del_image.IsExist():
             # PageImp.Page_Login.Page_Login.Login_del_image.Click()
@@ -33,10 +35,12 @@ class Login_And_out():
                 sleep(2)
                 PageImp.Page_Login.Page_Login.PassWord.Set(exc_password)
                 sleep(2)
-        PageImp.Page_Login.Page_Login.Login_loginbtn.Click_No_Switch()
+
+        # 点击屏幕坐标点,点击1次
+        PublicImp.env.driver.execute_script("mobile: tap", {"touchCount": "1", "x": 355, "y": 634})
         sleep(20)
 
     @classmethod
     def logout(cls):
-        PageImp.Page_Login.Page_Login.Logout.Click()
+        PageImp.Page_PersonalCenter.Page_PersonalCenter.LogOut.Click()
         sleep(2)

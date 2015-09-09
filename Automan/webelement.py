@@ -310,6 +310,21 @@ class WebElement:
         cls.__clearup()
 
     @classmethod
+    def Click_Touch(cls):
+        log.step_normal("Element [%s]: Do Click()" % cls.__name__)
+
+        cls.__wait()
+        elements = env.driver.find_element(cls.by, cls.value)
+        # elements.click()
+
+        action = webdriver.ActionChains(env.driver)
+        # action.press(98, 331).release().perform()
+        action.key_down(elements).key_up(elements)
+
+        time.sleep(5)
+        cls.__clearup()
+
+    @classmethod
     def ClickList_App(cls):
         log.step_normal("Element [%s]: Do Click()" % cls.__name__)
 

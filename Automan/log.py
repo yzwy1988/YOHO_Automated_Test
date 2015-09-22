@@ -195,7 +195,7 @@ def handle_error():
         
         screenshot_name = "%s__%s__Error_%s.png" % (env.CASE_NAME, env.platformName, common.stamp_datetime_coherent())
         
-        common.mkdirs("\\Result\\screenshots\\")
+        common.mkdirs("%s\\Result\\screenshots\\" % env.PROJECT_PATH)
         env.driver.save_screenshot(u"%s\\Result\\screenshots\\%s" % (env.PROJECT_PATH, screenshot_name))
         
         step_normal("Please check screen short [%s]" % screenshot_name)

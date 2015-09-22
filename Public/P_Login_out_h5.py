@@ -3,6 +3,7 @@
 from Page import PageImp
 from Automan import PublicImp
 from time import sleep
+from appium import webdriver
 
 
 class Login_And_out():
@@ -11,6 +12,9 @@ class Login_And_out():
     def login(cls, account=None, password=None):
 
         PageImp.Page_HomeGuide.Page_HomeGuide.GoBoys.Click()
+        # PublicImp.env.driver.execute_script('mobile: keyevent', {"keycode": "KEYCODE_BACK"})
+        # webdriver.Remote.keyevent()
+        # sleep(5)
 
         if PageImp.Page_Home.Page_Home.Float_Layer_Close.IsExist():
             PageImp.Page_Home.Page_Home.Float_Layer_Close.Click()
@@ -35,6 +39,8 @@ class Login_And_out():
                 sleep(2)
                 PageImp.Page_Login.Page_Login.PassWord.Set(exc_password)
                 sleep(2)
+
+        # PageImp.Page_Login.Page_Login.Login_loginbtn.Click()
 
         # 点击屏幕坐标点,点击1次
         PublicImp.env.driver.execute_script("mobile: tap", {"touchCount": "1", "x": 355, "y": 634})

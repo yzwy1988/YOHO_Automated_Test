@@ -4,7 +4,7 @@ from Automan import PublicImp
 import os
 import time
 
-# Web/Android
+# Web/Android/iOS/H5
 def run_all_case():
     for filename in os.listdir("TestCase"):
         if filename.split("_")[0] == "H5" and os.path.splitext(filename)[1] == '.py':

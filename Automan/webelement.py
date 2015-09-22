@@ -763,7 +763,7 @@ class WebElement:
             try:
                 print(u"__wait_cls.value= %s " % cls.value)
                 elements = env.driver.find_elements(cls.by, cls.value)
-                print("__wait_elements= %s " % elements)
+                # print("__wait_elements= %s " % elements)
                 print("__wait_len(elements)= %s " % len(elements))
                 print("------------------------------------------------------------")
             except NoSuchElementException:

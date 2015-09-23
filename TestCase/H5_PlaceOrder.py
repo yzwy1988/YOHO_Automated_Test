@@ -3,6 +3,7 @@
 from Public import P_Login_out_h5
 from Page import PageImp
 from Automan import PublicImp
+from time import sleep
 
 
 def testcase_H5_PlaceOrder():
@@ -30,6 +31,7 @@ def testcase_H5_PlaceOrder():
     # 添加商品到购物车
     if PageImp.Page_GoodsDetails.Page_GoodsDetails.ToBuyNow.IsExist():
         PageImp.Page_GoodsDetails.Page_GoodsDetails.ToBuyNow.Click()
+        sleep(3)
         PageImp.Page_GoodsDetails.Page_GoodsDetails.AddCartChooseColor.ClickList_App()
         PageImp.Page_GoodsDetails.Page_GoodsDetails.AddCartSizeList.ClickList_App()
         PageImp.Page_GoodsDetails.Page_GoodsDetails.addCartButton.Click()

@@ -11,6 +11,9 @@ class Login_And_out():
     def Login(cls, account=None, password=None):
         sleep(2)
         PageImp.Page_HomeGuide.Page_HomeGuide.GoBoys.Click()
+        sleep(2)
+        if PageImp.Page_Home.Page_Home.ad_close.IsExist():
+            PageImp.Page_Home.Page_Home.ad_close.Click()
         sleep(10)
         PageImp.Page_Home.Page_Home.tabMain_my.Click()
         sleep(2)
@@ -43,6 +46,13 @@ class Login_And_out():
                 PageImp.Page_Login_Register.Page_Login_Register.Login_password.Set(exc_password)
                 sleep(2)
         PageImp.Page_Login_Register.Page_Login_Register.Login_loginbtn.Click()
+        sleep(2)
+
+        i = 0
+        while i <= 5:
+            if PageImp.Page_Login_Register.Page_Login_Register.Login_loginbtn.IsExist():
+                PageImp.Page_Login_Register.Page_Login_Register.Login_loginbtn.Click()
+            i += 1
         sleep(10)
 
     @classmethod

@@ -62,6 +62,7 @@ def testcase_Android_PlaceOrder():
     u""" 购物车列表-选择赠品-开始 """
     if PageImp.Page_Shop_Cart.Page_Shop_Cart.shoppingcart_gift.IsExist():
         PageImp.Page_Shop_Cart.Page_Shop_Cart.shoppingcart_gift.Click()
+        PageImp.Page_Shop_Cart.Page_Shop_Cart.shoppingcart_gift_goods_image.Click()
 
         i = 0
         while i < 5:

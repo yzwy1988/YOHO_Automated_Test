@@ -68,8 +68,8 @@ def generatehtml():
             <td bgColor=#C0C0C0 >Safari</td>
             <td bgColor=#C0C0C0 >Android</td>
             <td bgColor=#C0C0C0 >IOS</td>
-            <td bgColor=#C0C0C0 >Android-H5</td>
-            <td bgColor=#C0C0C0 >IOS-H5</td>
+            <td bgColor=#C0C0C0 >H5-Android</td>
+            <td bgColor=#C0C0C0 >H5-IOS</td>
         </tr>
         <result_trs/>
     </table>
@@ -91,12 +91,12 @@ def generatehtml():
             Safari_status = excelvalue[4]
             Android_status = excelvalue[5]
             IOS_status = excelvalue[6]
-            Android_H5_status = excelvalue[7]
-            IOS_H5_status = excelvalue[8]
+            H5_Android_status = excelvalue[7]
+            H5_IOS_status = excelvalue[8]
 
         # cur.execute("insert into executer_result values('" + env.ExecuterDate + "','" + sheetname + "','" + testcasename + "','" + IE_status + "','" + Firefox_status + "','" + Chrome_status + "','" + Safari_status + "','" + Android_status + "','" + IOS_status + "')")
         # conn.commit()
-        sql = "insert into executer_result values('" + env.ExecuterDate + "','" + sheetname + "','" + testcasename + "','" + IE_status + "','" + Firefox_status + "','" + Chrome_status + "','" + Safari_status + "','" + Android_status + "','" + IOS_status + "','" + Android_H5_status + "','" + IOS_H5_status + "')"
+        sql = "insert into executer_result values('" + env.ExecuterDate + "','" + sheetname + "','" + testcasename + "','" + IE_status + "','" + Firefox_status + "','" + Chrome_status + "','" + Safari_status + "','" + Android_status + "','" + IOS_status + "','" + H5_Android_status + "','" + H5_IOS_status + "')"
         db.insert(sql)
 
         result_tr = "<tr><td style="'text-align:left'" >" + sheetname + "</td><td style="'text-align:left'" >" + testcasename + "</td>"
@@ -149,21 +149,21 @@ def generatehtml():
         else:
             result_tr += "<td>" + IOS_status + "</td>"
 
-        # Android_H5_status
-        if Android_H5_status == "Pass":
-            result_tr += "<td bgColor=#008000 >" + Android_H5_status + "</font></td>"
-        elif Android_H5_status == "Fail":
-            result_tr += "<td bgColor=#FF0000 >" + Android_H5_status + "</font></td>"
+        # H5_Android_status
+        if H5_Android_status == "Pass":
+            result_tr += "<td bgColor=#008000 >" + H5_Android_status + "</font></td>"
+        elif H5_Android_status == "Fail":
+            result_tr += "<td bgColor=#FF0000 >" + H5_Android_status + "</font></td>"
         else:
-            result_tr += "<td>" + Android_H5_status + "</td>"
+            result_tr += "<td>" + H5_Android_status + "</td>"
 
-        # IOS_H5_status
-        if IOS_H5_status == "Pass":
-            result_tr += "<td bgColor=#008000 >" + IOS_H5_status + "</font></td>"
-        elif IOS_H5_status == "Fail":
-            result_tr += "<td bgColor=#FF0000 >" + IOS_H5_status + "</font></td>"
+        # H5_IOS_status
+        if H5_IOS_status == "Pass":
+            result_tr += "<td bgColor=#008000 >" + H5_IOS_status + "</font></td>"
+        elif H5_IOS_status == "Fail":
+            result_tr += "<td bgColor=#FF0000 >" + H5_IOS_status + "</font></td>"
         else:
-            result_tr += "<td>" + IOS_H5_status + "</td>"
+            result_tr += "<td>" + H5_IOS_status + "</td>"
 
         result_trs += result_tr
 

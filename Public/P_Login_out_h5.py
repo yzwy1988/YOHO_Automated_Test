@@ -40,10 +40,10 @@ class Login_And_out():
                 PageImp.Page_Login.Page_Login.PassWord.Set(exc_password)
                 sleep(2)
 
-        PageImp.Page_Login.Page_Login.Login_loginbtn.Click()
+        # PageImp.Page_Login.Page_Login.Login_loginbtn.Click()
 
         # 点击屏幕坐标点,点击1次
-        # PublicImp.env.driver.execute_script("mobile: tap", {"touchCount": "1", "x": 355, "y": 634})
+        PublicImp.env.driver.execute_script("mobile: tap", {"touchCount": "1", "x": 355, "y": 634})
         sleep(20)
 
     @classmethod

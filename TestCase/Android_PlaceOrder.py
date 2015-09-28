@@ -54,6 +54,8 @@ def testcase_Android_PlaceOrder():
         pro_num = PageImp.Page_Product_Detail.Page_Product_Detail.tv_pro_info_num.GetAttribute("text")
         if pro_num != 0:
             break
+        else:
+            continue
     u""" 商品详情页-尺码、颜色选择页面-随机选择有库存的颜色、尺码-结束 """
 
     PageImp.Page_Product_Detail.Page_Product_Detail.pro_info_submit.Click()
@@ -65,7 +67,7 @@ def testcase_Android_PlaceOrder():
         PageImp.Page_Shop_Cart.Page_Shop_Cart.shoppingcart_gift_goods_image.Click()
 
         i = 0
-        while i < 5:
+        while i <= 5:
             PageImp.Page_Product_Detail.Page_Product_Detail.product_color.ClickList_App()
             PageImp.Page_Product_Detail.Page_Product_Detail.product_size.ClickList_App()
             PublicImp.env.driver.switch_to.context("NATIVE_APP")

@@ -27,6 +27,8 @@ def generate_result_xls():
             sheet.write(0, 4, 'Safari', style_bold)
             sheet.write(0, 5, 'Android', style_bold)
             sheet.write(0, 6, 'IOS', style_bold)
+            sheet.write(0, 7, 'Android-H5', style_bold)
+            sheet.write(0, 8, 'IOS-H5', style_bold)
             
             sheet.col(0).width = 256 * 50
             sheet.col(1).width = 256 * 15
@@ -35,6 +37,8 @@ def generate_result_xls():
             sheet.col(4).width = 256 * 15
             sheet.col(5).width = 256 * 15
             sheet.col(6).width = 256 * 15
+            sheet.col(7).width = 256 * 15
+            sheet.col(8).width = 256 * 15
 
             i = 1
             for case in m["TestCases"]:
@@ -99,6 +103,26 @@ def generate_result_xls():
                         sheet.write(i, 6, case["IOS"], style_red)
                 else:
                     sheet.write(i, 6, "NO RUN", style_other)
+
+                if "Android-H5" in case:
+                    if case["Android-H5"] == "Pass":
+                        env.CaseSuccess += 1
+                        sheet.write(i, 7, case["Android-H5"], style_green)
+                    elif case["Android-H5"] == "Fail":
+                        env.CaseFail += 1
+                        sheet.write(i, 7, case["Android-H5"], style_red)
+                else:
+                    sheet.write(i, 7, "NO RUN", style_other)
+
+                if "IOS-H5" in case:
+                    if case["IOS-H5"] == "Pass":
+                        env.CaseSuccess += 1
+                        sheet.write(i, 8, case["IOS-H5"], style_green)
+                    elif case["IOS-H5"] == "Fail":
+                        env.CaseFail += 1
+                        sheet.write(i, 8, case["IOS-H5"], style_red)
+                else:
+                    sheet.write(i, 8, "NO RUN", style_other)
 
                 i += 1
 

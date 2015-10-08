@@ -11,10 +11,8 @@ class Login_And_out():
     @classmethod
     def login(cls, account=None, password=None):
 
-        PageImp.Page_HomeGuide.Page_HomeGuide.GoBoys.Click()
-        # PublicImp.env.driver.execute_script('mobile: keyevent', {"keycode": "KEYCODE_BACK"})
-        # webdriver.Remote.keyevent()
-        # sleep(5)
+        if PageImp.Page_HomeGuide.Page_HomeGuide.GoBoys.IsExist():
+            PageImp.Page_HomeGuide.Page_HomeGuide.GoBoys.Click()
 
         if PageImp.Page_Home.Page_Home.Float_Layer_Close.IsExist():
             PageImp.Page_Home.Page_Home.Float_Layer_Close.Click()

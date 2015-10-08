@@ -15,10 +15,10 @@ def Create_Page():
 
     if Testing_Browsers_or_Devices == "Android" or Testing_Browsers_or_Devices == "IOS":
         data = xlrd.open_workbook(u"%s\\Data\\PageObjectsData_app.xlsx" % currentPath)
-    elif Testing_Browsers_or_Devices == "Web":
-        data = xlrd.open_workbook(u"%s\\Data\\PageObjectsData_web.xlsx" % currentPath)
-    else:
+    elif Testing_Browsers_or_Devices == "H5-Android" or Testing_Browsers_or_Devices == "H5-iOS":
         data = xlrd.open_workbook(u"%s\\Data\\PageObjectsData_h5.xlsx" % currentPath)
+    else:
+        data = xlrd.open_workbook(u"%s\\Data\\PageObjectsData_web.xlsx" % currentPath)
 
     # 清空Page文件夹
     targetDir = u"%s\\Page" % currentPath

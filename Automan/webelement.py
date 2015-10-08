@@ -279,7 +279,7 @@ class WebElement:
         action = webdriver.ActionChains(env.driver)
         action.move_to_element(elements[cls.index])
         action.perform()
-        
+
         cls.__clearup()
         time.sleep(1)
 
@@ -324,6 +324,7 @@ class WebElement:
         time.sleep(5)
         cls.__clearup()
 
+    # APP列表中随机选择一个进行点击
     @classmethod
     def ClickList_App(cls):
         log.step_normal("Element [%s]: Do Click()" % cls.__name__)

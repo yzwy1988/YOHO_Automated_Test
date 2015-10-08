@@ -8,10 +8,16 @@ from time import sleep
 
 def testcase_H5_PlaceOrder():
 
+    # 按power键点亮屏幕
+    PublicImp.env.driver.sendKeyEvent(26)
+
+    PageImp.Page_HomeGuide.Page_HomeGuide.GoBoys.Click()
+
+    """
     P_Login_out_h5.Login_And_out.login()
 
     PageImp.Page_PersonalCenter.Page_PersonalCenter.headerYOHO.Click()
-    PageImp.Page_HomeGuide.Page_HomeGuide.GoBoys.Click()
+    # PageImp.Page_HomeGuide.Page_HomeGuide.GoBoys.Click()
 
     # 购物车列表--清空购物车
     PageImp.Page_Home.Page_Home.HeaderCart.Click()
@@ -22,6 +28,7 @@ def testcase_H5_PlaceOrder():
             PageImp.Page_ShopCart.Page_ShopCart.DeleteFromOrder.Click()
         i += 1
     PageImp.Page_ShopCart.Page_ShopCart.ListBack.Click()
+    """
 
     # 首页-点击新品到着
     PageImp.Page_Home.Page_Home.New.Click()

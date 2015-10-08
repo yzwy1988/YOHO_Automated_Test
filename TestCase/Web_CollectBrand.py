@@ -25,9 +25,9 @@ def testcase_CollectBrand():
     # 点击品牌一览链接
     PageImp.Page_Home.Page_Home.Brand_View.Click()
     # 获取所有品牌总数，并且随机点一个品牌
-    sleep(10)
+    sleep(5)
     PageImp.Page_BrandList.Page_BrandList.Blist.ClickList()
-    sleep(15)
+    sleep(5)
     # 点击收藏按钮
     PageImp.Page_SearchResultList.Page_SearchResultList.BrandFavor.Click_No_Switch()
     sleep(5)

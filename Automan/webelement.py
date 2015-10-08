@@ -352,24 +352,17 @@ class WebElement:
         cls.__wait()
 
         i = 0
-        rd = 0
-        while i < 3:
+        while i < 1:
             elements = env.driver.find_elements(cls.by, cls.value)
             rd = random.randint(0, len(elements)-1)
 
             action = webdriver.ActionChains(env.driver)
             action.move_to_element(elements[rd])
+            action.click(elements[rd])
             action.perform()
 
             time.sleep(2)
             i += 1
-
-        print(rd)
-        elements = env.driver.find_elements(cls.by, cls.value)
-
-        action = webdriver.ActionChains(env.driver)
-        action.click(elements[rd])
-        action.perform()
 
         env.driver.switch_to_window(env.driver.window_handles[-1])
         env.driver.maximize_window()
@@ -764,7 +757,7 @@ class WebElement:
             try:
                 print(u"__wait_cls.value= %s " % cls.value)
                 elements = env.driver.find_elements(cls.by, cls.value)
-                # print("__wait_elements= %s " % elements)
+                print("__wait_elements= %s " % elements)
                 print("__wait_len(elements)= %s " % len(elements))
                 print("------------------------------------------------------------")
             except NoSuchElementException:

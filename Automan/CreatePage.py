@@ -8,7 +8,7 @@ import common
 
 def Create_Page():
 
-    # 当前工作目录
+    # 获取当前工作目录
     currentPath = os.getcwdu()
 
     Testing_Browsers_or_Devices = common.get_value_from_conf_path("TESTING_BROWSERS_OR_DEVICES", currentPath)
@@ -29,29 +29,29 @@ def Create_Page():
     removeFileInFirstDir(targetDir)
 
     with open(u"%s\\Page\\__init__.py" % currentPath, "a") as f:
-            f.write(u"__author__ = 'lulei'\n\n")
+            f.write("__author__ = 'lulei'\n\n")
 
     for sheetname in data.sheet_names():
         table = data.sheet_by_name(sheetname)
         nrows = table.nrows
 
         with open(u"%s\\Page\\PageImp.py" % currentPath, "a") as f:
-            f.write(u"\nfrom Page import %s" % sheetname)
+            f.write("\nfrom Page import %s" % sheetname)
 
         with open(u"%s\\Page\\%s.py" % (currentPath, sheetname), "a") as f:
-            f.write(u"# -*- coding: utf-8 -*-\n\n")
-            f.write(u"from Automan import PublicImp\n")
-            f.write(u"from selenium.webdriver.common.by import By\n\n\n")
-            f.write(u"class %s:\n\n" % sheetname)
+            f.write("# -*- coding: utf-8 -*-\n\n")
+            f.write("from Automan import PublicImp\n")
+            f.write("from selenium.webdriver.common.by import By\n\n\n")
+            f.write("class %s:\n\n" % sheetname)
             for i in range(1, nrows):
                 excelvalue = table.row_values(i)
                 Element = excelvalue[0]
                 ByWay = excelvalue[1]
                 VALUE = excelvalue[2]
                 Description = excelvalue[3]
-                f.write(u"    # %s\n" % Description)
-                f.write(u"    class %s(PublicImp.webelement.WebElement):\n" % Element)
-                f.write(u"        (by, value) = (By.%s, '%s')\n\n" % (ByWay, VALUE))
+                f.write("    # %s\n" % Description)
+                f.write("    class %s(PublicImp.webelement.WebElement):\n" % Element)
+                f.write("        (by, value) = (By.%s, '%s')\n\n" % (ByWay, VALUE))
 
     time.sleep(10)
 

@@ -6,23 +6,28 @@ import sys
 import inspect
 import env
 
+
 def stamp_date_nomal():
     return datetime.datetime.now()
+
 
 def stamp_date():
     return datetime.datetime.now().strftime("%Y-%m-%d")
 
+
 def stamp_datetime():
     return datetime.datetime.now().strftime("%Y-%m-%d %H:%M:%S")
+
 
 def stamp_datetime_coherent():
     return datetime.datetime.now().strftime("%Y-%m-%d_%H_%M_%S")
 
-    u"""
-    求时间差,传入timestart和timestop都是用datetime.datetime.now()的返回值;
-    python输出普通格式的时间,用str(datetime.datetime.now())[:19]即可,日期是[:10];
-    """
+
 def timediff(timestart, timestop):
+    u"""
+      求时间差,传入timestart和timestop都是用datetime.datetime.now()的返回值;
+      python输出普通格式的时间,用str(datetime.datetime.now())[:19]即可,日期是[:10];
+    """
     t = (timestop-timestart)
     time_day = t.days
     s_time = t.seconds
@@ -36,6 +41,7 @@ def timediff(timestart, timestop):
     # retstr = u"%d天%d小时%d分%d秒%d毫秒"  % (time_day, time_hour, time_minute, time_second, time_micsecond)
     retstr = u"%d小时%d分%d秒" % (time_hour, time_minute, time_second)
     return retstr
+
 
 def exception_error():
     error_message = ""
@@ -133,6 +139,7 @@ def get_value_from_conf(key):
                     return str(data.split('=', 1)[1].strip())
     except IOError:
         return ""
+
 
 def get_value_from_conf_path(key, path):
     conf_file = u"%s\\conf.ini" % path

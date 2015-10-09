@@ -4,10 +4,12 @@ from Automan import PublicImp
 import os
 import time
 
+
 # Web/Android/iOS/H5
 def run_all_case():
+    """测试用例运行总入口"""
     for filename in os.listdir("TestCase"):
-        if filename.split("_")[0] == "H5" and os.path.splitext(filename)[1] == '.py':
+        if filename.split("_")[0] == "WEB" and os.path.splitext(filename)[1] == '.py':
             name = filename.split(".")[0]
             print("=> **********************************")
             print("=> Soon Will run the test case ** %s.py **" % name)
@@ -34,4 +36,4 @@ PublicImp.env.CalTime = CalTime
 PublicImp.env.ExecuterDate = Executer_Date
 
 # 发送测试报告邮件
-# PublicImp.sendreport.sendreport()
+PublicImp.sendreport.sendreport()

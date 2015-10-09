@@ -1,6 +1,6 @@
 # -*- coding: utf-8 -*-
 
-'''
+"""
 Description:
     This module is for file Upload/Download dialogue in Windows System.
     
@@ -14,8 +14,7 @@ Preconditions:
 Reference:
     http://stackoverflow.com/questions/17235228/which-is-the-best-way-to-interact-with-already-open-native-os-dialog-boxes-like
     
-'''
-
+"""
 
 import win32gui
 import re
@@ -35,7 +34,7 @@ class WindowFinder:
         self._handle = win32gui.FindWindow(class_name, window_name)
 
     def _window_enum_callback(self, hwnd, wildcard):
-        '''Call back func which checks each open window and matches the name of window using reg ex'''
+        """Call back func which checks each open window and matches the name of window using reg ex"""
         if re.match(wildcard, str(win32gui.GetWindowText(hwnd))) != None:
             self._handle = hwnd
 
@@ -65,7 +64,7 @@ def send_keys_to_dialog(title=r".*Upload.*", key_valus=r""):
 
 
 if __name__ == "__main__":
-    send_keys_to_dialog(u"Open", r"E:\documents\Selenium.docx")
+    send_keys_to_dialog("Open", r"E:\documents\Selenium.docx")
 
 
 

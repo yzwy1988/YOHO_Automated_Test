@@ -154,7 +154,7 @@ def start_test(case_name):
     common.mkdirs("%s\\Result\\testcase\\" % env.PROJECT_PATH)
     
     with open(u"%s\\Result\\testcase\\%s__%s.log" % (env.PROJECT_PATH, env.CASE_NAME, common.stamp_date()), "a") as f:
-        f.write(u"\n**************  Test Case [%s] [%s]  ***************\n" % (env.CASE_NAME, env.platformName))
+        f.write("\n**************  Test Case [%s] [%s]  ***************\n" % (env.CASE_NAME, env.platformName))
 
 
 def stop_test():
@@ -164,13 +164,13 @@ def stop_test():
         env.RUNNING_PASS_OR_FAIL = env.CASE_PASS
         if env.CASE_PASS == True:
             add_excel_report_data(env.EXCEL_REPORT_DATA, env.MODULE_NAME, env.CASE_NAME, env.platformName, "Pass")
-            f.write(u"%s    [Pass]  =>  [%s] [%s] [%s]\n" % (common.stamp_datetime(),
+            f.write("%s    [Pass]  =>  [%s] [%s] [%s]\n" % (common.stamp_datetime(),
                                                             env.CASE_STOP_TIME - env.CASE_START_TIME, 
                                                             env.CASE_NAME, 
                                                             env.platformName))
         else:
             add_excel_report_data(env.EXCEL_REPORT_DATA, env.MODULE_NAME, env.CASE_NAME, env.platformName, "Fail")
-            f.write(u"%s    [Fail]  =>  [%s] [%s] [%s] (⊙o⊙) \n" % (common.stamp_datetime(),
+            f.write("%s    [Fail]  =>  [%s] [%s] [%s] (⊙o⊙) \n" % (common.stamp_datetime(),
                                                                  env.CASE_STOP_TIME - env.CASE_START_TIME, 
                                                                  env.CASE_NAME, 
                                                                  env.platformName))
@@ -181,26 +181,26 @@ def stop_test():
 
 def step_section(message):
     with open(u"%s\\Result\\testcase\\%s__%s.log" % (env.PROJECT_PATH, env.CASE_NAME, common.stamp_date()), "a") as f:
-        f.write(u"\n%s    Section: %s\n" % (common.stamp_datetime(), message))
+        f.write("\n%s    Section: %s\n" % (common.stamp_datetime(), message))
 
 
 def step_normal(message):
     with open(u"%s\\Result\\testcase\\%s__%s.log" % (env.PROJECT_PATH, env.CASE_NAME, common.stamp_date()), "a") as f:
-        f.write(u"%s    Step: %s\n" % (common.stamp_datetime(), message))
+        f.write("%s    Step: %s\n" % (common.stamp_datetime(), message))
 
 
 def step_pass(message):
     with open(u"%s\\Result\\testcase\\%s__%s.log" % (env.PROJECT_PATH, env.CASE_NAME, common.stamp_date()), "a") as f:
-        f.write(u"%s    Pass: %s\n" % (common.stamp_datetime(), message))
+        f.write("%s    Pass: %s\n" % (common.stamp_datetime(), message))
 
 
 def step_fail(message):
     screenshot_name = "%s__%s__Fail__%s.png" % (env.CASE_NAME, env.platformName, common.stamp_datetime_coherent())
     
     with open(u"%s\\Result\\testcase\\%s__%s.log" % (env.PROJECT_PATH, env.CASE_NAME, common.stamp_date()), "a") as f:
-        f.write(u"------------ Fail [%s] -------------------\n" % common.stamp_datetime())
-        f.write(u"%s    Fail: %s, Check ScreenShot [%s]\n" % (common.stamp_datetime(), message, screenshot_name))
-        f.write(u"------------ Fail [%s] --------------------------------------------\n" % common.stamp_datetime())
+        f.write("------------ Fail [%s] -------------------\n" % common.stamp_datetime())
+        f.write("%s    Fail: %s, Check ScreenShot [%s]\n" % (common.stamp_datetime(), message, screenshot_name))
+        f.write("------------ Fail [%s] --------------------------------------------\n" % common.stamp_datetime())
     
     common.mkdirs("%s\\Result\\screenshots\\" % env.PROJECT_PATH)
     env.driver.save_screenshot(u"%s\\Result\\screenshots\\%s" % (env.PROJECT_PATH, screenshot_name))

@@ -3,9 +3,14 @@
 from Public import P_Login_out_android
 from Page import PageImp
 from Automan import PublicImp
+from appium.webdriver.connectiontype import ConnectionType
 
 
 def testcase_Android_PlaceOrder():
+
+    # 设置网络连接情况
+    PublicImp.env.driver.set_network_connection(ConnectionType.AIRPLANE_MODE)
+    PublicImp.env.driver.set_network_connection(ConnectionType.WIFI_ONLY)
 
     P_Login_out_android.Login_And_out.Login()
 

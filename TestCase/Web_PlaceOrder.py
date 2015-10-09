@@ -5,27 +5,30 @@ from Public import P_Login_out_web
 from Automan import PublicImp
 from time import sleep
 
-"""
-  测试用例描述:
-     访问网站--登录--点击导航栏购物车--进入购物车--清空购物车--返回首页--
-     点击品牌一览--进入品牌列表页--点击快速导航中的N字母--点击NIKE品牌--进入nike商品列表页--
-     选择列表中的第1个商品--点击进入商品详情页--选择颜色、尺码,点击添加到购物车--点击去购物车结算--
-     进入购物车列表页--点击去结算--进入结算页面--选择收货地址,点击去付款,进入在线支付页面--
-     点击导航栏中的订单中心--进入个人中心我的订单列表--选择刚下的订单--点击取消订单按钮--
-     在弹出框内选择取消原因,点击确认按钮--完成订单取消操作--
-     用户退出登录;
-"""
-
 
 def testcase_placeorder():
+    """
+      测试用例描述:
+        访问网站--登录--点击导航栏购物车--进入购物车--清空购物车--返回首页--
+        点击品牌一览--进入品牌列表页--点击快速导航中的N字母--点击NIKE品牌--进入nike商品列表页--
+        选择列表中的第1个商品--点击进入商品详情页--选择颜色、尺码,点击添加到购物车--点击去购物车结算--
+        进入购物车列表页--点击去结算--进入结算页面--选择收货地址,点击去付款,进入在线支付页面--
+        点击导航栏中的订单中心--进入个人中心我的订单列表--选择刚下的订单--点击取消订单按钮--
+        在弹出框内选择取消原因,点击确认按钮--完成订单取消操作--
+        用户退出登录;
+     """
 
     # 调用公共登录组件登录系统;
     P_Login_out_web.Login_and_out.Login()
 
     sleep(5)
     # 点击导航栏中 购物车 链接;
-    PageImp.Page_Home.Page_Home.ShopCart.Click()
-    sleep(10)
+    # PageImp.Page_Home.Page_Home.ShopCart.MouseOver()
+    # if PageImp.Page_Home.Page_Home.GoToCart.IsExist():
+        # PageImp.Page_Home.Page_Home.GoToCart.Click()
+
+    PublicImp.env.driver.get("http://www.yohobuy.com/shopping/cart")
+    sleep(5)
     # 判断购物车列表中是否有商品,如果有则点击 批量删除 按钮清空购物车;
     if PageImp.Page_ShopCart.Page_ShopCart.ShopCartListSelectAll.IsExist():
         # PageImp.Page_ShopCart.Page_ShopCart.ShopCartListSelectAll.Click()
@@ -46,7 +49,7 @@ def testcase_placeorder():
     sleep(3)
     # 点击Nike品牌,进入商品列表页面
     PageImp.Page_BrandList.Page_BrandList.Nike_brands.Click()
-    sleep(10)
+    sleep(5)
     # 商品列表--获取商品名称及商品价格
     # goodname = PageImp.Page_SearchResultList.Page_SearchResultList.GetGoodName.GetInnerHTML()
     # goodprice = PageImp.Page_SearchResultList.Page_SearchResultList.GetGoodPrice.GetInnerHTML()
@@ -54,12 +57,13 @@ def testcase_placeorder():
     # print(goodprice)
     # 商品列表页面,点击列表中商品,进入商品详情页面
     PageImp.Page_SearchResultList.Page_SearchResultList.ResultList.ClickList()
-    sleep(10)
+    sleep(5)
     # 判断商品详情页面中的商品名称与商品价格与之前商品列表中选择的商品名称及价格信息是否一致
     # PageImp.Page_GoodsDetails.Page_GoodsDetails.Goods_Name.VerifyInnerHTMLContains(goodname)
     # PageImp.Page_GoodsDetails.Page_GoodsDetails.Goods_Price.VerifyInnerHTMLContains(goodprice)
     # 商品详情页面,选择颜色（未售罄）
-    PageImp.Page_GoodsDetails.Page_GoodsDetails.ChooseColor.ClickList()
+    if PageImp.Page_GoodsDetails.Page_GoodsDetails.ChooseColor.GetObjectsCount() > 1:
+        PageImp.Page_GoodsDetails.Page_GoodsDetails.ChooseColor.ClickList()
     sleep(3)
     # 商品详情页面,选择尺码（未售罄）
     PageImp.Page_GoodsDetails.Page_GoodsDetails.ChooseSize.ClickList()
@@ -69,7 +73,7 @@ def testcase_placeorder():
     sleep(3)
     # 点击 去购物车结算 按钮,进入购物车列表页面
     PageImp.Page_GoodsDetails.Page_GoodsDetails.GotoCartButton.Click()
-    sleep(10)
+    sleep(5)
 
     # 购物车-选择赠品
     if PageImp.Page_ShopCart.Page_ShopCart.Mark_Zeng.IsExist():
@@ -82,11 +86,14 @@ def testcase_placeorder():
     # 购物车列表页面点击去结算按钮
     PageImp.Page_ShopCart.Page_ShopCart.ToSettleAccounts.Click()
     sleep(5)
+
     # 结算页面,选择收货地址,付款方式默认为：在线支付
-    PageImp.Page_OrderDetails.Page_OrderDetails.SelectShippingAddress.Click()
-    sleep(3)
-    # 结算页面,选择收货地址后,点击保存并送到这个地址按钮
-    PageImp.Page_OrderDetails.Page_OrderDetails.SaveShippingAddress.Click()
+    if PageImp.Page_OrderDetails.Page_OrderDetails.SelectShippingAddress.IsExist():
+        PageImp.Page_OrderDetails.Page_OrderDetails.SelectShippingAddress.Click()
+        sleep(3)
+        # 结算页面,选择收货地址后,点击保存并送到这个地址按钮
+        PageImp.Page_OrderDetails.Page_OrderDetails.SaveShippingAddress.Click()
+
     # 结算页面--验证支付方式是否为"在线支付"
     PageImp.Page_OrderDetails.Page_OrderDetails.PayMode.VerifyInnerHTMLContains("在线支付")
     sleep(3)
@@ -112,7 +119,7 @@ def testcase_placeorder():
     sleep(3)
     # 在成功取消订单提示内点击确定按钮
     PageImp.Page_PersonalCenter.Page_PersonalCenter.OrderCenter_ClickConfirm.Click()
-    sleep(10)
+    sleep(5)
 
     # 调用公共登录组件退出系统;
     P_Login_out_web.Login_and_out.Logout()

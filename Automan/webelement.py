@@ -29,7 +29,7 @@ class WebBrowser:
     def NavigateTo(cls, url):
         log.step_normal(u"Element [%s]: Navigate To [%s]" % (cls.__name__, url))
         env.driver.get(url)
-        time.sleep(5)
+        time.sleep(3)
 
     @classmethod
     def IESkipCertError(cls):
@@ -229,7 +229,7 @@ class WebElement:
                     action.click(lis[order-1])
                     action.perform()
 
-                    time.sleep(5)
+                    time.sleep(3)
 
             else:
                 log.step_fail("Order = [%s], Value Error." % order)
@@ -262,7 +262,7 @@ class WebElement:
                     action.click(options[order-1])
                     action.perform()
 
-                    time.sleep(5)
+                    time.sleep(3)
 
             else:
                 log.step_fail("Order = [%s], Value Error." % order)
@@ -290,7 +290,7 @@ class WebElement:
         cls.__wait()
         elements = env.driver.find_element(cls.by, cls.value)
         elements.click()
-        time.sleep(5)
+        time.sleep(3)
 
         if env.RUNNING_BROWSER in ("Chrome", "Firefox", "IE", "Safari"):
             env.driver.switch_to_window(env.driver.window_handles[-1])
@@ -306,7 +306,7 @@ class WebElement:
         elements = env.driver.find_element(cls.by, cls.value)
         elements.click()
 
-        time.sleep(5)
+        time.sleep(3)
         cls.__clearup()
 
     @classmethod
@@ -321,7 +321,7 @@ class WebElement:
         # action.press(98, 331).release().perform()
         action.key_down(elements).key_up(elements)
 
-        time.sleep(5)
+        time.sleep(3)
         cls.__clearup()
 
     # APP列表中随机选择一个进行点击
@@ -334,7 +334,7 @@ class WebElement:
         rd = random.randint(0, len(elements)-1)
         elements[rd].click()
 
-        time.sleep(5)
+        time.sleep(3)
         cls.__clearup()
 
     # ClickList，获取元素列表，然后从列表中,随机点击一个
@@ -345,7 +345,7 @@ class WebElement:
         if env.RUNNING_BROWSER in ("Chrome", "Firefox", "IE", "Safari"):
             js1 = "var q = document.documentElement.scrollTop=0"
             env.driver.execute_script(js1)
-            time.sleep(5)
+            time.sleep(3)
             js2 = "var q = document.documentElement.scrollTop=100000"
             env.driver.execute_script(js2)
 
@@ -366,7 +366,7 @@ class WebElement:
 
         env.driver.switch_to_window(env.driver.window_handles[-1])
         env.driver.maximize_window()
-        time.sleep(5)
+        time.sleep(3)
 
         cls.__clearup()
 
@@ -399,11 +399,11 @@ class WebElement:
         action.click(elements[cls.index])
         action.perform()
 
-        time.sleep(5)
+        time.sleep(3)
         env.driver.switch_to_window(env.driver.window_handles[-1])
         env.driver.maximize_window()
 
-        time.sleep(5)
+        time.sleep(3)
         
         try:
             elements = env.driver.find_elements(cls.by, cls.value)
@@ -413,10 +413,10 @@ class WebElement:
                 action.double_click(elements[cls.index])
                 action.perform()
 
-                time.sleep(5)
+                time.sleep(3)
                 env.driver.switch_to_window(env.driver.window_handles[-1])
                 env.driver.maximize_window()
-                time.sleep(5)
+                time.sleep(3)
 
         except:
             pass
@@ -434,10 +434,10 @@ class WebElement:
         action.double_click(elements[cls.index])
         action.perform()
 
-        time.sleep(5)
+        time.sleep(3)
         env.driver.switch_to_window(env.driver.window_handles[-1])
         # env.driver.maximize_window()
-        time.sleep(5)
+        time.sleep(3)
         
         cls.__clearup()
 
@@ -844,7 +844,7 @@ class WebElement:
             rd = random.randint(1, len(options)-1)
             log.step_normal("Element [%s]: Do Click [%s]" % (cls.__name__, rd))
             options[rd].click()
-            time.sleep(5)
+            time.sleep(3)
 
         cls.__clearup()
 

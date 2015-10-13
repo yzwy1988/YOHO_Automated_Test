@@ -79,7 +79,7 @@ def create_page_from_db():
 
         time.sleep(2)
 
-    print("")
+    print("=> create_page_from_db finish ! ")
     db.close()
 
 

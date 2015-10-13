@@ -8,4 +8,5 @@ from Automan import webelement
 from Automan import wingui
 from Automan import sendreport
 from Automan import CreatePage
+from Automan import create_page_from_db
 from Automan import DBUtil

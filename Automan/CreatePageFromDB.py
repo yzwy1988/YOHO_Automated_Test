@@ -14,7 +14,24 @@ def create_page_from_db():
     # 获取当前工作目录
     currentPath = os.getcwdu()
 
-    Testing_Browsers_or_Devices = common.get_value_from_conf_path("TESTING_BROWSERS_OR_DEVICES", currentPath)
+    project_name = common.get_value_from_conf_path("PROJECT_NAME", currentPath)
+    source_name = common.get_value_from_conf_path("TESTING_BROWSERS_OR_DEVICES", currentPath)
+
+    if project_name == "YOHO":
+        project_id = 11
+    elif project_name == "SHOW":
+        project_id = 12
+    elif project_name == "ZIXUN":
+        project_id = 13
+
+    if source_name in ("Chrome", "Firefox", "IE", "Safari"):
+        source_id = 21
+    elif source_name == "APP-Android":
+        source_id = 22
+    elif source_name == "APP-IOS":
+        source_id = 23
+    elif source_name == "H5-Android" or source_name == "H5-iOS":
+        source_id = 24
 
     # 清空Page文件夹
     targetDir = u"%s\\Page" % currentPath
@@ -43,8 +60,10 @@ def create_page_from_db():
     with open(u"%s\\Page\\__init__.py" % currentPath, "a") as f:
             f.write("__author__ = 'YOHO'\n\n")
 
-    sql = "SELECT DISTINCT a.page_id ,b.pagename_cn FROM yoho_pageobject a, yoho_pagename b" \
-          " WHERE a.page_id = b.id AND a.state='A'"
+    sql = "SELECT DISTINCT a.page_id ,b.pagename_cn FROM yoho_pageobject a, yoho_pagename b, " \
+          "yoho_project c, yoho_source d WHERE a.page_id = b.id AND a.project_id=c.id AND a.source_id=d.id " \
+          "AND a.state='A' and a.project_id=" + str(project_id) + \
+          " and a.source_id=" + str(source_id) + " order by a.id asc "
 
     db.query(sql)
     result = db.fetchAllRows()

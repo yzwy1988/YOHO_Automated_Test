@@ -102,8 +102,7 @@ class WebBrowser:
         t = 0
         while t < 10:
             t += 1
-            time.sleep(3)
-            
+
             if len(env.driver.window_handles) < 2:
                 log.step_normal("Pop Window Not Found. Wait 3 Seconds then Try Again!")
             else:
@@ -116,7 +115,7 @@ class WebBrowser:
     def SwitchToDefaultWindow(cls):
         log.step_normal("SwitchToDefaultWindow()")
         log.step_normal("Switch To The Default Window of: %s" % str(env.driver.window_handles))
-        
+
         try:
             env.driver.switch_to.window(env.driver.window_handles[0])
         except:
@@ -197,7 +196,7 @@ class WebElement:
         log.step_normal("Element [%s]: Do Select by Order [%s]" % (cls.__name__, order))
         
         order = int(order)
-        
+
         cls.__wait()
         elements = env.driver.find_elements(cls.by, cls.value)
         
@@ -206,7 +205,6 @@ class WebElement:
             lis = elements[cls.index].find_elements_by_tag_name('li')
             
             if order > 0:
-                
                 # Wait and try more times if NO item found.
                 t = 0
                 while len(lis) == 0:
@@ -228,7 +226,6 @@ class WebElement:
                     action = webdriver.ActionChains(env.driver)
                     action.click(lis[order-1])
                     action.perform()
-
                     time.sleep(3)
 
             else:
@@ -239,7 +236,6 @@ class WebElement:
             options = elements[cls.index].find_elements_by_tag_name('option')
             
             if order > 0:
-                
                 # Wait and try more times if NO item found.
                 t = 0
                 while len(options) == 0:
@@ -261,7 +257,6 @@ class WebElement:
                     action = webdriver.ActionChains(env.driver)
                     action.click(options[order-1])
                     action.perform()
-
                     time.sleep(3)
 
             else:
@@ -281,7 +276,7 @@ class WebElement:
         action.perform()
 
         cls.__clearup()
-        time.sleep(1)
+        time.sleep(3)
 
     @classmethod
     def Click(cls):
@@ -300,34 +295,32 @@ class WebElement:
 
     @classmethod
     def Click_No_Switch(cls):
-        log.step_normal("Element [%s]: Do Click()" % cls.__name__)
+        log.step_normal("Element [%s]: Do Click_No_Switch()" % cls.__name__)
 
         cls.__wait()
         elements = env.driver.find_element(cls.by, cls.value)
         elements.click()
-
         time.sleep(3)
+
         cls.__clearup()
 
     @classmethod
-    def Click_Touch(cls):
-        log.step_normal("Element [%s]: Do Click()" % cls.__name__)
+    def Click_key_down_up(cls):
+        log.step_normal("Element [%s]: Do Click_key_down_up()" % cls.__name__)
 
         cls.__wait()
         elements = env.driver.find_element(cls.by, cls.value)
-        # elements.click()
 
         action = webdriver.ActionChains(env.driver)
-        # action.press(98, 331).release().perform()
         action.key_down(elements).key_up(elements)
-
         time.sleep(3)
+
         cls.__clearup()
 
     # APP列表中随机选择一个进行点击
     @classmethod
     def ClickList_App(cls):
-        log.step_normal("Element [%s]: Do Click()" % cls.__name__)
+        log.step_normal("Element [%s]: Do ClickList_App()" % cls.__name__)
 
         cls.__wait()
         elements = env.driver.find_elements(cls.by, cls.value)
@@ -340,7 +333,7 @@ class WebElement:
     # ClickList，获取元素列表，然后从列表中,随机点击一个
     @classmethod
     def ClickList(cls):
-        log.step_normal("Element [%s]: Do Click()" % cls.__name__)
+        log.step_normal("Element [%s]: Do ClickList()" % cls.__name__)
 
         if env.RUNNING_BROWSER in ("Chrome", "Firefox", "IE", "Safari"):
             js1 = "var q = document.documentElement.scrollTop=0"
@@ -360,8 +353,8 @@ class WebElement:
             action.move_to_element(elements[rd])
             action.click(elements[rd])
             action.perform()
-
             time.sleep(2)
+
             i += 1
 
         env.driver.switch_to_window(env.driver.window_handles[-1])
@@ -378,7 +371,7 @@ class WebElement:
         Risk:
             It may operate more than one click operations.
         """
-        log.step_normal("Element [%s]: Doing EnhancedClick()" % cls.__name__)
+        log.step_normal("Element [%s]: Do EnhancedClick()" % cls.__name__)
         
         cls.__wait()
         
@@ -389,8 +382,8 @@ class WebElement:
             action = webdriver.ActionChains(env.driver)
             action.move_to_element(elements[cls.index])
             action.perform()
-            
             time.sleep(2)
+
             i += 1
         
         elements = env.driver.find_elements(cls.by, cls.value)
@@ -398,22 +391,20 @@ class WebElement:
         action = webdriver.ActionChains(env.driver)
         action.click(elements[cls.index])
         action.perform()
-
         time.sleep(3)
+
         env.driver.switch_to_window(env.driver.window_handles[-1])
         env.driver.maximize_window()
-
         time.sleep(3)
         
         try:
             elements = env.driver.find_elements(cls.by, cls.value)
-            
             if len(elements) > 0:
                 action = webdriver.ActionChains(env.driver)
                 action.double_click(elements[cls.index])
                 action.perform()
-
                 time.sleep(3)
+
                 env.driver.switch_to_window(env.driver.window_handles[-1])
                 env.driver.maximize_window()
                 time.sleep(3)
@@ -433,8 +424,8 @@ class WebElement:
         action = webdriver.ActionChains(env.driver)
         action.double_click(elements[cls.index])
         action.perform()
-
         time.sleep(3)
+
         env.driver.switch_to_window(env.driver.window_handles[-1])
         # env.driver.maximize_window()
         time.sleep(3)
@@ -533,7 +524,6 @@ class WebElement:
         
         cls.__wait()
         elements = env.driver.find_elements(cls.by, cls.value)
-        
         log.step_normal(u"Element [%s]: InnerHTML = [%s]" % (cls.__name__, elements[cls.index].get_attribute('innerHTML')))
         
         cls.__clearup()
@@ -545,7 +535,6 @@ class WebElement:
         
         cls.__wait()
         elements = env.driver.find_elements(cls.by, cls.value)
-        
         attr_value = elements[cls.index].get_attribute(attr)
         log.step_normal(u"Element [%s]: Attribute Value = [%s]." % (cls.__name__, attr_value))
         
@@ -603,9 +592,8 @@ class WebElement:
     @classmethod
     def IsExist(cls):
         log.step_normal("Element [%s]: IsExist?" % cls.__name__)
-        time.sleep(2)
 
-        # cls.__wait()
+        cls.__wait()
         elements = env.driver.find_elements(cls.by, cls.value)
         log.step_normal("Element [%s]: IsExist? Count = [%s]" % (cls.__name__, len(elements)))
         
@@ -634,7 +622,7 @@ class WebElement:
     def VerifyExistence(cls, trueORfalse):
         log.step_normal("Element [%s]: Verify Existence = [%s]." % (cls.__name__, trueORfalse))
         
-        if trueORfalse == True:
+        if trueORfalse is True:
             cls.__wait_for_appearing()
         else:
             cls.__wait_for_disappearing()
@@ -643,13 +631,14 @@ class WebElement:
         log.step_normal("Element [%s]: Count = [%s]" % (cls.__name__, len(elements)))
 
         cls.__clearup()
+
         if len(elements) > 0:
-            if trueORfalse == True:
+            if trueORfalse is True:
                 log.step_pass("Exist!")
             else:
                 log.step_fail("Exist!")
         else:
-            if trueORfalse == False:
+            if trueORfalse is False:
                 log.step_pass("Not Exist!")
             else:
                 log.step_fail("Not Exist!")
@@ -662,12 +651,12 @@ class WebElement:
         elements = env.driver.find_elements(cls.by, cls.value)
         
         if elements[cls.index].is_enabled():
-            if trueOrfalse == True:
+            if trueOrfalse is True:
                 log.step_pass("Pass")
             else:
                 log.step_fail("Fail")
         else:
-            if trueOrfalse == True:
+            if trueOrfalse is True:
                 log.step_fail("Fail")
             else:
                 log.step_pass("Pass")
@@ -751,14 +740,15 @@ class WebElement:
     @classmethod
     def __wait(cls):
         t = 0
-        while t < 10:
+        while t < 5:
             t += 1
             
             try:
-                print(u"__wait_cls.value= %s " % cls.value)
+                # print(u"__wait_cls.value= %s " % cls.value)
                 elements = env.driver.find_elements(cls.by, cls.value)
-                print("__wait_elements= %s " % elements)
-                print("__wait_len(elements)= %s " % len(elements))
+                # print("__wait_elements= %s " % elements)
+                # print("__wait_len(elements)= %s " % len(elements))
+                print(u"=> Elements [%s] Find Success" % cls.value)
                 print("------------------------------------------------------------")
             except NoSuchElementException:
                 log.step_normal("Element [%s]: NoSuchElementException." % cls.__name__)
@@ -766,8 +756,8 @@ class WebElement:
                 # print(u"[Find Element Fail !]  =>  ")
             
             if len(elements) == 0:
-                time.sleep(3)
-                log.step_normal("Element [%s]: Wait 3 Seconds, By [%s :: %s :: %s]" % (cls.__name__, cls.by, cls.value, cls.index))
+                time.sleep(2)
+                log.step_normal("Element [%s] Find Fail, Wait 2 Seconds, By [%s :: %s :: %s]" % (cls.__name__, cls.by, cls.value, cls.index))
             else:
                 if len(elements) > 1:
                     log.step_normal("Element [%s]: There are [%s] Elements!" % (cls.__name__, len(elements)))
@@ -779,11 +769,10 @@ class WebElement:
 
     @classmethod
     def __wait_for_disappearing(cls):
-        
         t = 0
-        while t < 10:
+        while t < 5:
             t += 1
-            
+
             try:
                 elements = env.driver.find_elements(cls.by, cls.value)
             except NoSuchElementException:
@@ -801,9 +790,8 @@ class WebElement:
 
     @classmethod
     def __wait_for_appearing(cls):
-        
         t = 0
-        while t < 10:
+        while t < 5:
             t += 1
             
             try:
@@ -813,8 +801,8 @@ class WebElement:
                 elements = []
             
             if len(elements) == 0:
-                time.sleep(3)
-                log.step_normal("Element [%s]: WaitForAppearing... Wait 3 Seconds, By [%s]" % (cls.__name__, cls.value))
+                time.sleep(2)
+                log.step_normal("Element [%s]: WaitForAppearing... Wait 2 Seconds, By [%s]" % (cls.__name__, cls.value))
             else:
                 log.step_normal("Element [%s]: Found [%s] Element. Tried [%s] Times." % (cls.__name__, len(elements), t))
                 break
@@ -830,28 +818,30 @@ class WebElement:
 
     @classmethod
     def SelectByRandomOrder(cls):
-
         log.step_normal("Element [%s]: Do SelectByRandomOrder " % cls.__name__)
 
+        cls.__wait()
         elements = env.driver.find_elements(cls.by, cls.value)
 
         # select
         if elements[cls.index].tag_name == "select":
             options = elements[cls.index].find_elements_by_tag_name('option')
-
             log.step_normal("Element [%s]: options Count = [%s]." % (cls.__name__, len(options)))
 
             rd = random.randint(1, len(options)-1)
             log.step_normal("Element [%s]: Do Click [%s]" % (cls.__name__, rd))
             options[rd].click()
-            time.sleep(3)
 
         cls.__clearup()
 
     @classmethod
     def swipe_screen_down(cls, element_id, x=0, y=-500, speed=0):
+        """
+        发送触摸手势给设备 flick(轻触)
+        引导页滑动
+        """
+        cls.__wait()
 
         pages = env.driver.find_element_by_id(element_id)
-        print(len(pages))
         touch_actions = TouchActions(env.driver)
         touch_actions.flick_element(pages, x, y, speed).perform()

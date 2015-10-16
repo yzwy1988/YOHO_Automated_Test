@@ -19,19 +19,6 @@ def generatehtml():
     passwdfromconf = common.get_value_from_conf("passwd")
     dbfromconf = common.get_value_from_conf("db")
     charsetfromconf = common.get_value_from_conf("charset")
-    # print(hostfromconf, portfromconf, userfromconf, passwdfromconf, dbfromconf, charsetfromconf)
-
-    """
-    conn = MySQLdb.connect(
-        host='localhost',
-        port=3306,
-        user='root',
-        passwd='*****',
-        db='test',
-        use_unicode=True,
-        charset="utf8",
-        )
-    """
 
     dbconfig = {'host': hostfromconf,
                 'port': int(portfromconf),
@@ -42,9 +29,9 @@ def generatehtml():
 
     db = DBUtil.MySQL(dbconfig)
 
-    # cur = conn.cursor()
-
     Running_Browser_Devices = common.get_value_from_conf("TESTING_BROWSERS_OR_DEVICES")
+
+    precent = round(float(env.CaseSuccess)/(env.CaseSuccess + env.CaseFail), 4)*100
 
     template = """
     <html>
@@ -60,7 +47,7 @@ def generatehtml():
                             <font color="blue">Executer_Case_Total： """ + str(env.CaseSuccess + env.CaseFail) + """</font> <br>
                             <font color="blue">Executer_Case_Success： """ + str(env.CaseSuccess) + """</font> <br>
                             <font color="blue">Executer_Case_Fail： """ + str(env.CaseFail) + """</font> <br>
-                            <font color="blue">Executer_SuccessRate(%)： """ + str(env.CaseSuccess/(env.CaseSuccess + env.CaseFail)*100) + """% </font>
+                            <font color="blue">Executer_SuccessRate(%)： """ + str(precent) + """% </font>
             </td>
         </tr>
         <tr>
@@ -105,8 +92,6 @@ def generatehtml():
             if sheetname == tescaseName:
                 break
 
-        # cur.execute("insert into executer_result values('" + env.ExecuterDate + "','" + sheetname + "','" + testcasename + "','" + IE_status + "','" + Firefox_status + "','" + Chrome_status + "','" + Safari_status + "','" + Android_status + "','" + IOS_status + "')")
-        # conn.commit()
         sql = "insert into executer_result values('" + env.ExecuterDate + "','" + sheetname + "','" + testcasename + "','" + IE_status + "','" + Firefox_status + "','" + Chrome_status + "','" + Safari_status + "','" + Android_status + "','" + IOS_status + "','" + H5_Android_status + "','" + H5_IOS_status + "')"
         db.insert(sql)
 
@@ -178,10 +163,7 @@ def generatehtml():
 
         result_trs += result_tr
 
-    # cur.close()
-    # conn.close()
     db.close()
 
     html = template.replace("<result_trs/>", result_trs)
-
     open(".\\Result\\result.html", "w").write(html)

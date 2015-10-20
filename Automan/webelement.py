@@ -593,7 +593,7 @@ class WebElement:
     def IsExist(cls):
         log.step_normal("Element [%s]: IsExist?" % cls.__name__)
 
-        cls.__wait()
+        # cls.__wait()
         elements = env.driver.find_elements(cls.by, cls.value)
         log.step_normal("Element [%s]: IsExist? Count = [%s]" % (cls.__name__, len(elements)))
         
@@ -744,17 +744,16 @@ class WebElement:
             t += 1
             
             try:
-                # print(u"__wait_cls.value= %s " % cls.value)
+                print(u"Element: %s " % cls.value)
                 elements = env.driver.find_elements(cls.by, cls.value)
                 # print("__wait_elements= %s " % elements)
-                # print("__wait_len(elements)= %s " % len(elements))
-                print(u"=> Elements [%s] Find Success" % cls.value)
+                print("There are [%s] Elements" % len(elements))
                 print("------------------------------------------------------------")
             except NoSuchElementException:
                 log.step_normal("Element [%s]: NoSuchElementException." % cls.__name__)
                 elements = []
                 # print(u"[Find Element Fail !]  =>  ")
-            
+
             if len(elements) == 0:
                 time.sleep(2)
                 log.step_normal("Element [%s] Find Fail, Wait 2 Seconds, By [%s :: %s :: %s]" % (cls.__name__, cls.by, cls.value, cls.index))
@@ -820,7 +819,6 @@ class WebElement:
     def SelectByRandomOrder(cls):
         log.step_normal("Element [%s]: Do SelectByRandomOrder " % cls.__name__)
 
-        cls.__wait()
         elements = env.driver.find_elements(cls.by, cls.value)
 
         # select
@@ -831,6 +829,7 @@ class WebElement:
             rd = random.randint(1, len(options)-1)
             log.step_normal("Element [%s]: Do Click [%s]" % (cls.__name__, rd))
             options[rd].click()
+            time.sleep(3)
 
         cls.__clearup()
 

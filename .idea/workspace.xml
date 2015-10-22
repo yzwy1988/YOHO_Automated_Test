@@ -2,11 +2,8 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="b01d12cc-34ac-4946-971e-57c4db144fb2" name="Default" comment="Add：H5_PlaceOrder测试用例选择颜色前sleep3秒；">
-      <change type="DELETED" beforePath="E:\GitHub\YOHO_Automated_Test\Page\readme.txt" afterPath="" />
-      <change type="DELETED" beforePath="E:\GitHub\YOHO_Automated_Test\Result\readme.txt" afterPath="" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/Data/LoginUserData_app.xlsx" afterPath="$PROJECT_DIR$/Data/LoginUserData_app.xlsx" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/Data/LoginUserData_h5.xlsx" afterPath="$PROJECT_DIR$/Data/LoginUserData_h5.xlsx" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/Data/LoginUserData_web.xlsx" afterPath="$PROJECT_DIR$/Data/LoginUserData_web.xlsx" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/Page/readme.txt" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/Result/readme.txt" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/conf.ini" afterPath="$PROJECT_DIR$/conf.ini" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
     </list>
@@ -744,7 +741,13 @@
       <option name="project" value="LOCAL" />
       <updated>1445498557799</updated>
     </task>
-    <option name="localTasksCounter" value="35" />
+    <task id="LOCAL-00035" summary="Add：H5_PlaceOrder测试用例选择颜色前sleep3秒；">
+      <created>1445498743194</created>
+      <option name="number" value="00035" />
+      <option name="project" value="LOCAL" />
+      <updated>1445498743194</updated>
+    </task>
+    <option name="localTasksCounter" value="36" />
     <servers />
   </component>
   <component name="TodoView">
@@ -840,9 +843,9 @@
     <MESSAGE value="modify file" />
     <MESSAGE value="add" />
     <MESSAGE value="Add：TestCase" />
-    <MESSAGE value="Add：H5_PlaceOrder测试用例选择颜色前sleep3秒；" />
     <MESSAGE value="modify" />
-    <option name="LAST_COMMIT_MESSAGE" value="modify" />
+    <MESSAGE value="Add：H5_PlaceOrder测试用例选择颜色前sleep3秒；" />
+    <option name="LAST_COMMIT_MESSAGE" value="Add：H5_PlaceOrder测试用例选择颜色前sleep3秒；" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>

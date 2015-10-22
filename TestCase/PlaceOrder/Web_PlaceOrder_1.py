@@ -120,7 +120,7 @@ def testcase_placeorder():
     else:
         # 结算页面--支付及送货时间--修改按钮
         PageImp.Page_OrderDetails.Page_OrderDetails.editPay.Click()
-        # 结算页面--选择货到付款
+        # 结算页面--选择在线支付
         PageImp.Page_OrderDetails.Page_OrderDetails.pay_type1.Click()
         PageImp.Page_OrderDetails.Page_OrderDetails.PaymentButton.Click()
 

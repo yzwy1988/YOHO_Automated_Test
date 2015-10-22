@@ -71,8 +71,8 @@ def testcase_placeorder():
     sleep(5)
 
     # 购物车页面--列表--随机选择商品移入收藏夹
-    PageImp.Page_ShopCart.Page_ShopCart.AddToFavorites.ClickList_App()
-    sleep(3)
+    # PageImp.Page_ShopCart.Page_ShopCart.AddToFavorites.ClickList_App()
+    # sleep(3)
 
     # 购物车-选择赠品
     if PageImp.Page_ShopCart.Page_ShopCart.Mark_Zeng.IsExist():
@@ -150,6 +150,8 @@ def testcase_placeorder():
 
     # 订单成页面(货到付款)--获取订单号
     ordernumber = PageImp.OrderSuccessPage.OrderSuccessPage.GetOrderNumber.GetInnerHTML()
+
+    sleep(3)
     # 订单成页面(货到付款)--点击页面顶部导航栏中的订单中心链接,进入个人中心-我的订单;
     PageImp.OrderSuccessPage.OrderSuccessPage.GoToOrderCenter.Click()
     sleep(5)

@@ -82,9 +82,7 @@ def testcase_placeorder():
     sleep(5)
 
     # 结算页面--收货地址--判断是否有默认地址,如果有则切换地址;
-    if PageImp.Page_OrderDetails.Page_OrderDetails.NoSaveClose.IsExist():
-        pass
-    else:
+    if PageImp.Page_OrderDetails.Page_OrderDetails.editAddress.IsExist():
         PageImp.Page_OrderDetails.Page_OrderDetails.editAddress.Click()
 
     # 结算页面--收货地址--判断收货地址列表是否有地址;有则随机选择一个,没有则添加一个地址;
@@ -108,7 +106,7 @@ def testcase_placeorder():
     else:
         # 结算页面--支付及送货时间--修改按钮
         PageImp.Page_OrderDetails.Page_OrderDetails.editPay.Click()
-        # 结算页面--选择货到付款
+        # 结算页面--选择在线支付
         PageImp.Page_OrderDetails.Page_OrderDetails.pay_type1.Click()
         PageImp.Page_OrderDetails.Page_OrderDetails.PaymentButton.Click()
 
@@ -136,7 +134,7 @@ def testcase_placeorder():
 
     # 在线支付页面--获取生成的订单编号
     OrderNumber = PageImp.Page_OnlinePay.Page_OnlinePay.GetOrderNumber.GetInnerHTML()
-    sleep(5)
+    sleep(3)
 
     # 在线支付页面,点击页面顶部导航栏中 订单中心 链接,进入个人中心-我的订单;
     PageImp.Page_OnlinePay.Page_OnlinePay.GoToOrderCenter.Click()

@@ -83,9 +83,7 @@ def testcase_placeorder():
     sleep(5)
 
     # 结算页面--收货地址--判断是否有默认地址,如果有则切换地址;
-    if PageImp.Page_OrderDetails.Page_OrderDetails.NoSaveClose.IsExist():
-        pass
-    else:
+    if PageImp.Page_OrderDetails.Page_OrderDetails.editAddress.IsExist():
         PageImp.Page_OrderDetails.Page_OrderDetails.editAddress.Click()
 
     # 判断结算页面-收货地址的总数,如果大于等于5,则随机删除一个地址
@@ -133,14 +131,15 @@ def testcase_placeorder():
     PageImp.Page_OrderDetails.Page_OrderDetails.Remark.Set(unicode("YOHO备注信息"))
     PageImp.Page_OrderDetails.Page_OrderDetails.RemarkBox.ClickList_App()
 
-    # 结算页面,点击页面底部的 去付款 按钮,进入在线支付页面
+    # 结算页面,点击页面底部的 去付款 按钮
     PageImp.Page_OrderDetails.Page_OrderDetails.ToPay.Click()
 
     # 订单成页面(货到付款)--获取订单号
     ordernumber = PageImp.OrderSuccessPage.OrderSuccessPage.GetOrderNumber.GetInnerHTML()
+
+    sleep(3)
     # 订单成页面(货到付款)--点击页面顶部导航栏中的订单中心链接,进入个人中心-我的订单;
     PageImp.OrderSuccessPage.OrderSuccessPage.GoToOrderCenter.Click()
-    sleep(5)
 
     # 判断个人中心--我的订单列表中是否存在刚下单的订单号
     PageImp.Page_PersonalCenter.Page_PersonalCenter.OrderCenter_GetOrderNumber.VerifyInnerHTMLContains(ordernumber)

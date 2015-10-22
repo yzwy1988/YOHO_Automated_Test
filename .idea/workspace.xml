@@ -5,9 +5,9 @@
       <change type="DELETED" beforePath="E:\GitHub\YOHO_Automated_Test\Page\readme.txt" afterPath="" />
       <change type="DELETED" beforePath="E:\GitHub\YOHO_Automated_Test\Result\readme.txt" afterPath="" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/Data/LoginUserData_app.xlsx" afterPath="$PROJECT_DIR$/Data/LoginUserData_app.xlsx" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/Data/LoginUserData_h5.xlsx" afterPath="$PROJECT_DIR$/Data/LoginUserData_h5.xlsx" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/Data/LoginUserData_web.xlsx" afterPath="$PROJECT_DIR$/Data/LoginUserData_web.xlsx" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/conf.ini" afterPath="$PROJECT_DIR$/conf.ini" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/vcs.xml" afterPath="$PROJECT_DIR$/.idea/vcs.xml" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
     </list>
     <list id="3f7188cd-db34-4d84-9f2c-33ced4c130dd" name="New changelist" comment="New changelist" />
@@ -148,38 +148,6 @@
             </PATH_ELEMENT>
             <PATH_ELEMENT>
               <option name="myItemId" value="YOHO_Automated_Test" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="YOHO_Automated_Test" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="YOHO_Automated_Test" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="TestCase" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="YOHO_Automated_Test" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="YOHO_Automated_Test" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="TestCase" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="PlaceOrder" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
           </PATH>
@@ -770,7 +738,13 @@
       <option name="project" value="LOCAL" />
       <updated>1445498354421</updated>
     </task>
-    <option name="localTasksCounter" value="34" />
+    <task id="LOCAL-00034" summary="modify">
+      <created>1445498557799</created>
+      <option name="number" value="00034" />
+      <option name="project" value="LOCAL" />
+      <updated>1445498557799</updated>
+    </task>
+    <option name="localTasksCounter" value="35" />
     <servers />
   </component>
   <component name="TodoView">
@@ -787,7 +761,7 @@
     <editor active="false" />
     <layout>
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.3296875" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
-      <window_info id="Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.3296875" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
+      <window_info id="Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.3296875" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="8" side_tool="true" content_ui="tabs" />
       <window_info id="Application Servers" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="12" side_tool="false" content_ui="tabs" />
       <window_info id="Python Console" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.3296875" sideWeight="0.5" order="9" side_tool="false" content_ui="tabs" />
@@ -864,11 +838,11 @@
     <MESSAGE value="修改了TestCaseDescription.xlsx文件" />
     <MESSAGE value="Made some optimization" />
     <MESSAGE value="modify file" />
-    <MESSAGE value="modify" />
     <MESSAGE value="add" />
     <MESSAGE value="Add：TestCase" />
     <MESSAGE value="Add：H5_PlaceOrder测试用例选择颜色前sleep3秒；" />
-    <option name="LAST_COMMIT_MESSAGE" value="Add：H5_PlaceOrder测试用例选择颜色前sleep3秒；" />
+    <MESSAGE value="modify" />
+    <option name="LAST_COMMIT_MESSAGE" value="modify" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
@@ -1116,14 +1090,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/conf.ini">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.06203474">
-          <caret line="67" column="25" selection-start-line="67" selection-start-column="25" selection-end-line="67" selection-end-column="25" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/Page/Page_OrderDetails.py">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
@@ -1132,10 +1098,18 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/TestCase/PlaceOrder/Web_PlaceOrder.py">
+    <entry file="file://$PROJECT_DIR$/TestCase/PlaceOrder/__init__.py">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
           <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/conf.ini">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="1.7241379">
+          <caret line="67" column="25" selection-start-line="67" selection-start-column="25" selection-end-line="67" selection-end-column="25" />
           <folding />
         </state>
       </provider>

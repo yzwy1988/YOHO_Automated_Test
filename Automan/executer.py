@@ -170,13 +170,18 @@ def testcase_windingup():
     os.popen("TASKKILL /F /IM chromedriver.exe")
 
 
-def run_module(module_name):
+def run_module(dirname, module_name):
     if sys.getdefaultencoding() != 'utf-8':
         reload(sys)
         sys.setdefaultencoding('utf-8')
-    
-    testmodule = importlib.import_module("TestCase.%s" % module_name)
-    
+
+    if dirname == "":
+        testmodule = importlib.import_module("TestCase.%s" % module_name)
+        testcasename = "TestCase->" + module_name + ".py"
+    else:
+        testmodule = importlib.import_module("TestCase.%s.%s" % (dirname, module_name))
+        testcasename = "TestCase->" + dirname + "->" + module_name + ".py"
+
     env.MODULE_NAME = module_name.split('.')[-1]
     testcases = [testmodule.__dict__.get(a).__name__ for a in dir(testmodule)
            if isinstance(testmodule.__dict__.get(a), types.FunctionType)]
@@ -228,7 +233,7 @@ def run_module(module_name):
                 while k < int(rerun_number):
                     RUNNING_PASS_OR_FAIL = env.RUNNING_PASS_OR_FAIL
                     if RUNNING_PASS_OR_FAIL == False:
-                        print("=> %s Runs %s Times in ** %s ** " % (testcase, (k+1), env.RUNNING_BROWSER))
+                        print("=> %s Runs %s Times in ** %s ** " % (testcasename, (k+1), env.RUNNING_BROWSER))
 
                         # Launch Browser
                         if "before_launch_browser" in testcases:
@@ -246,10 +251,10 @@ def run_module(module_name):
                                 getattr(testmodule, "before_each_testcase")()
 
                             getattr(testmodule, testcase)()
-                            print("=> the test case %s run ** Success ** " % testcase)
+                            print("=> the test case %s run ** Success ** " % testcasename)
                         except:
                             PublicImp.log.handle_error()
-                            print("=> the test case %s run ** Fail ** " % testcase)
+                            print("=> the test case %s run ** Fail ** " % testcasename)
                         finally:
                             if "after_each_testcase" in testcases:
                                 getattr(testmodule, "after_each_testcase")()

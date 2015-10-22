@@ -265,17 +265,15 @@ class WebElement:
         cls.__clearup()
 
     @classmethod
-    def MouseOver(cls):
-        log.step_normal("Element [%s]: Do MouseOver()" % cls.__name__)
+    def movetoelement(cls):
+        log.step_normal("Element [%s]: Do movetoelement()" % cls.__name__)
         
         cls.__wait()
-        elements = env.driver.find_elements(cls.by, cls.value)
-        
-        action = webdriver.ActionChains(env.driver)
-        action.move_to_element(elements[cls.index])
-        action.perform()
+        element = env.driver.find_element(cls.by, cls.value)
 
-        cls.__clearup()
+        action = webdriver.ActionChains(env.driver)
+        action.move_to_element(element).click()
+        action.perform()
         time.sleep(3)
 
     @classmethod
@@ -438,11 +436,12 @@ class WebElement:
         
         cls.__wait()
         elements = env.driver.find_elements(cls.by, cls.value)
-        
+
         action = webdriver.ActionChains(env.driver)
+        action.move_to_element(elements[cls.index])
         action.click_and_hold(elements[cls.index])
         action.perform()
-        
+
         cls.__clearup()
     
     @classmethod
@@ -678,7 +677,7 @@ class WebElement:
             log.step_pass("Real inner_hmtl=[%s]" % inner_html)
         else:
             log.step_fail("Real inner_hmtl=[%s]" % inner_html)
-        
+
         cls.__clearup()
 
     @classmethod
@@ -698,6 +697,24 @@ class WebElement:
             log.step_pass("Real inner_hmtl=[%s]" % inner_html)
 
         cls.__clearup()
+
+    @classmethod
+    def VerifyContentIsIncluded(cls, contain_content):
+        if contain_content == "":
+            return
+
+        log.step_normal("Element [%s]: VerifyContentIsIncluded [%s]." % (cls.__name__, contain_content))
+
+        cls.__wait()
+        elements = env.driver.find_elements(cls.by, cls.value)
+        inner_html = elements[cls.index].get_attribute('innerHTML')
+
+        if contain_content in inner_html:
+            cls.__clearup()
+            return True
+        else:
+            cls.__clearup()
+            return False
 
     @classmethod
     def VerifyAttribute(cls, attr, contain_content):

@@ -4,16 +4,25 @@ from Automan import PublicImp
 import os
 
 
-# Web/APP/H5
+# PlaceOrder/APP/H5
 def run_all_case():
     """测试用例运行总入口"""
 
     for filename in os.listdir("TestCase"):
-        if filename.split("_")[0] == "Web" and os.path.splitext(filename)[1] == '.py':
-            name = filename.split(".")[0]
-            print("=> **********************************")
-            print("=> Soon Will run the test case ** %s.py **" % name)
-            PublicImp.executer.run_module(name)
+        filepath = os.getcwd() + "\\TestCase\\" + filename
+        if os.path.isdir(filepath):
+            for filename2 in os.listdir(filepath):
+                if filename2.split("_")[0] == "Web" and os.path.splitext(filename2)[1] == '.py':
+                    name = filename2.split(".")[0]
+                    print("=> **********************************")
+                    print("=> Soon Will run the test case ** %s->%s->%s.py **" % ("TestCase", filename, name))
+                    PublicImp.executer.run_module(filename, name)
+        else:
+            if filename.split("_")[0] == "Web" and os.path.splitext(filename)[1] == '.py':
+                name = filename.split(".")[0]
+                print("=> **********************************")
+                print("=> Soon Will run the test case ** %s->%s.py **" % ("TestCase", name))
+                PublicImp.executer.run_module("", name)
 
     # 生成\\result\\result.xls文件
     PublicImp.log.generate_result_xls()

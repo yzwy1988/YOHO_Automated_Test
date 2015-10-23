@@ -6,7 +6,7 @@ from Automan import PublicImp
 from time import sleep
 
 
-def testcase_placeorder():
+def testcase_placeorder_1():
     """
       测试用例描述:
         访问网站--登录--点击导航栏购物车--进入购物车--清空购物车--返回首页--

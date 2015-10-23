@@ -6,7 +6,7 @@ from Automan import PublicImp
 from time import sleep
 
 
-def testcase_placeorder():
+def testcase_placeorder_3():
     """
       测试用例描述:
       使用货到付款、使用新地址、只双休日、节假日送货（工作时间不送货）、用顺丰速运，索要发票及备注信息、更改：送货前是否联系、是否打印价格

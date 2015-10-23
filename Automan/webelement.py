@@ -671,7 +671,24 @@ class WebElement:
         
         cls.__wait()
         elements = env.driver.find_elements(cls.by, cls.value)
-        # inner_html = elements[cls.index].get_attribute('innerHTML')
+        inner_html = elements[cls.index].get_attribute('innerHTML')
+
+        if contain_content in inner_html:
+            log.step_pass("Real inner_hmtl=[%s]" % inner_html)
+        else:
+            log.step_fail("Real inner_hmtl=[%s]" % inner_html)
+
+        cls.__clearup()
+
+    @classmethod
+    def VerifyInnerHTMLContainsByRandom(cls, contain_content):
+        if contain_content == "":
+            return
+
+        log.step_normal("Element [%s]: VerifyInnerHTMLContains [%s]." % (cls.__name__, contain_content))
+
+        cls.__wait()
+        elements = env.driver.find_elements(cls.by, cls.value)
         rd = random.randint(0, len(elements)-1)
         inner_html = elements[rd].get_attribute('innerHTML')
 

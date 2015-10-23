@@ -15,4 +15,4 @@ def web_search_by_good():
     PageImp.Page_Home.Page_Home.SearchButton.Click()
     sleep(3)
 
-    PageImp.Page_SearchResultList.Page_SearchResultList.GetProductNameList.VerifyInnerHTMLContains(searchcontent)
+    PageImp.Page_SearchResultList.Page_SearchResultList.GetProductNameList.VerifyInnerHTMLContainsByRandom(searchcontent)

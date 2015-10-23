@@ -89,9 +89,10 @@ def testcase_placeorder():
     # 判断结算页面-收货地址的总数,如果大于等于5,则随机删除一个地址
     if PageImp.Page_OrderDetails.Page_OrderDetails.SelectAddressByRandom.IsExist():
         addresscount = PageImp.Page_OrderDetails.Page_OrderDetails.SelectAddressByRandom.GetObjectsCount()
-        if addresscount >= 5:
-            PageImp.Page_OrderDetails.Page_OrderDetails.DelAddress.Click()
-            sleep(3)
+        i = addresscount
+        while i >= 5:
+            PageImp.Page_OrderDetails.Page_OrderDetails.DelAddress.ClickList_App()
+            i = PageImp.Page_OrderDetails.Page_OrderDetails.SelectAddressByRandom.GetObjectsCount()
 
     # 结算页面--收货地址--使用新地址
     PageImp.Page_OrderDetails.Page_OrderDetails.AddNewAddess.Click()
@@ -143,7 +144,7 @@ def testcase_placeorder():
 
     # 判断个人中心--我的订单列表中是否存在刚下单的订单号
     PageImp.Page_PersonalCenter.Page_PersonalCenter.OrderCenter_GetOrderNumber.VerifyInnerHTMLContains(ordernumber)
-
+    sleep(3)
     # 个人中心-我的订单,选择刚下的订单,点击取消订单按钮
     PageImp.Page_PersonalCenter.Page_PersonalCenter.OrderCenter_GetCancelOrderButton.Click()
     sleep(3)

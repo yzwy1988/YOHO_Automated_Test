@@ -24,7 +24,7 @@ def create_page_from_db():
     elif project_name == "ZIXUN":
         project_id = 13
 
-    if source_name in ("Chrome", "Firefox", "IE", "Safari"):
+    if source_name.split("|")[0] in ("Chrome", "Firefox", "IE", "Safari"):
         source_id = 21
     elif source_name == "APP-Android":
         source_id = 22

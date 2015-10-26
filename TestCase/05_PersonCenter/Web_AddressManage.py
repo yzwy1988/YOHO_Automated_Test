@@ -47,7 +47,7 @@ def testcase_addressmanage():
 
 # def testcase02_addressmanage_editaddress():
     # 调用公共登录组件登录系统;
-    # P_Login_out.Login_out.Login()
+    # P_Login_out.Login_out.01_Login()
     # sleep(5)
     # 点击首页-顶部导航栏中 MY有货 链接;
     # Page_Home.NavigationBar.MyYoho.Click()
@@ -85,7 +85,7 @@ def testcase_addressmanage():
 
 # def testcase03_addressmanage_deleteaddress():
     # 调用公共登录组件登录系统;
-    # P_Login_out.Login_out.Login()
+    # P_Login_out.Login_out.01_Login()
     # sleep(5)
     # 点击首页-顶部导航栏中 MY有货 链接;
     # Page_Home.NavigationBar.MyYoho.Click()

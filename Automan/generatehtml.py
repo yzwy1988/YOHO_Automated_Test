@@ -41,13 +41,13 @@ def generatehtml():
             <td colspan="11"><font face="微软雅黑" size="4" ><strong>YOHO Automated Test Report</strong></font></td>
         </tr>
         <tr align="left">
-            <td colspan="11"><font color="blue">Executer_Date： """ + env.ExecuterDate + """</font> <br>
-                            <font color="blue">Executer_Time： """ + env.CalTime + """</font> <br>
-                            <font color="blue">Running_Browser_Devices： """ + Running_Browser_Devices + """</font> <br>
-                            <font color="blue">Executer_Case_Total： """ + str(env.CaseSuccess + env.CaseFail) + """</font> <br>
-                            <font color="blue">Executer_Case_Success： """ + str(env.CaseSuccess) + """</font> <br>
-                            <font color="blue">Executer_Case_Fail： """ + str(env.CaseFail) + """</font> <br>
-                            <font color="blue">Executer_SuccessRate(%)： """ + str(precent) + """% </font>
+            <td colspan="11"><font color="blue">→Executer_Date： """ + env.ExecuterDate + """</font> <br>
+                             <font color="blue">→Executer_Time： """ + env.CalTime + """</font> <br>
+                             <font color="blue">→Running_Browser_Devices： """ + Running_Browser_Devices + """</font> <br>
+                             <font color="blue">→Executer_Case_Total： """ + str(env.CaseSuccess + env.CaseFail) + """</font> <br>
+                             <font color="blue">→Executer_Case_Success： """ + str(env.CaseSuccess) + """</font> <br>
+                             <font color="blue">→Executer_Case_Fail： """ + str(env.CaseFail) + """</font> <br>
+                             <font color="blue">→Executer_SuccessRate(%)： """ + str(precent) + """% </font>
             </td>
         </tr>
         <tr>

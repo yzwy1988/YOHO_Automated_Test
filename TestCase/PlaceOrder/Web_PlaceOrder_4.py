@@ -5,12 +5,13 @@ from Public import P_Login_out_web
 from Automan import PublicImp
 from time import sleep
 
+"""
+测试用例描述:
+    使用货到付款、默认地址、用顺丰速运，无发票及备注信息、其他选项默认
+"""
+
 
 def testcase_placeorder_4():
-    """
-      测试用例描述:
-      使用货到付款、默认地址、工作日、双休日和节假日均送货、用顺丰速运，无发票及备注信息、其他选项默认
-     """
 
     # 调用公共登录组件登录系统;
     P_Login_out_web.Login_and_out.Login()

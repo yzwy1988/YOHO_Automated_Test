@@ -4,6 +4,10 @@ from Automan import PublicImp
 from Page import PageImp
 from time import sleep
 
+"""
+  测试用例描述：搜索品类,验证搜索结果URL地址是否正确;
+"""
+
 
 def web_search_by_category():
 

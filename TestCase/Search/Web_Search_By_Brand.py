@@ -3,6 +3,10 @@
 from Page import PageImp
 from time import sleep
 
+"""
+  测试用例描述：搜索品牌,验证搜索结果是否包含XXX品牌店;
+"""
+
 
 def web_search_by_brand():
 

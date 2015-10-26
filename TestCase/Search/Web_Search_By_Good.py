@@ -3,6 +3,10 @@
 from Page import PageImp
 from time import sleep
 
+"""
+  测试用例描述：搜索商品名,验证搜索结果商品名称中是否包含搜索的内容;
+"""
+
 
 def web_search_by_good():
 

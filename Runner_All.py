@@ -4,7 +4,7 @@ from Automan import PublicImp
 import os
 
 
-# PlaceOrder/APP/H5
+# PC/APP/H5
 def run_all_case():
     """测试用例运行总入口"""
 

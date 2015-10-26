@@ -5,6 +5,10 @@ from time import sleep
 from Page import PageImp
 from Public import P_Login_out_web
 
+"""
+  测试用例描述：收藏商品
+"""
+
 
 def testcase_CollectGoods():
     # 调用登录方法

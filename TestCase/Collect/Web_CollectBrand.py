@@ -6,7 +6,11 @@ from Page import PageImp
 from Public import P_Login_out_web
 
 
-# 收藏品牌
+"""
+  测试用例描述：收藏品牌
+"""
+
+
 def testcase_CollectBrand():
     # 调用登录方法
     P_Login_out_web.Login_and_out.Login()

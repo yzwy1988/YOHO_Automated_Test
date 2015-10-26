@@ -5,7 +5,15 @@ from time import sleep
 from Page import PageImp
 from Public import P_Login_out_web
 
-# TestCase001_MyCollect:点击收藏夹商品名称，进入商品详情页面
+"""
+  测试用例描述：
+      1、个人中心--我的收藏--如果有已收藏的商,则清空收藏列表;
+      2、进入品牌列表--随机点击某品牌进入商品列表,然后随机点击某商品进入商品详情页面,点击收藏按钮;
+      3、进入个人中心--我的收藏--商品--查看是否收藏成功,然后点击进入商品详情页面,进行取消收藏;
+      4、再次进入个人中心--我的收藏--商品--验证取消收藏商品是否成功;
+"""
+
+
 def testcase_MyCollect():
     # 调用登录方法
     P_Login_out_web.Login_and_out.Login()

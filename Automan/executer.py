@@ -78,7 +78,7 @@ def launch_browser():
 
 
 def launch_device():
-    if env.TESTING_BROWSERS == 'Android':
+    if env.TESTING_BROWSERS == 'APP-Android':
         desired_caps = {}
         platformName = PublicImp.common.get_value_from_conf("TESTING_BROWSERS_OR_DEVICES")
         platformVersion = PublicImp.common.get_value_from_conf("platformVersion")
@@ -88,7 +88,7 @@ def launch_device():
         unicodeKeyboard = PublicImp.common.get_value_from_conf("unicodeKeyboard")
         resetKeyboard = PublicImp.common.get_value_from_conf("resetKeyboard")
 
-        desired_caps['platformName'] = platformName
+        desired_caps['platformName'] = "Android"
         desired_caps['platformVersion'] = platformVersion
         desired_caps['deviceName'] = deviceName
         desired_caps['appPackage'] = appPackage
@@ -98,7 +98,7 @@ def launch_device():
 
         env.platformName = platformName
 
-    elif env.TESTING_BROWSERS == 'iOS':
+    elif env.TESTING_BROWSERS == 'APP-iOS':
         PATH = lambda p: os.path.abspath(os.path.join(os.path.dirname(__file__), p))
         desired_caps = {}
         platformName = PublicImp.common.get_value_from_conf("TESTING_BROWSERS_OR_DEVICES")
@@ -109,7 +109,7 @@ def launch_device():
         unicodeKeyboard = PublicImp.common.get_value_from_conf("unicodeKeyboard")
         resetKeyboard = PublicImp.common.get_value_from_conf("resetKeyboard")
 
-        desired_caps['platformName'] = platformName
+        desired_caps['platformName'] = "iOS"
         desired_caps['platformVersion'] = platformVersion
         desired_caps['deviceName'] = deviceName
         # desired_caps['app'] = os.path.abspath('/Users/dingzhou/stone/YOHO_3.3.ipa')
@@ -192,7 +192,7 @@ def run_module(dirname, module_name):
 
     for testcase in testcases:
 
-        if "Android" in env.TESTING_BROWSERS or "IOS" in env.TESTING_BROWSERS:
+        if "APP-Android" in env.TESTING_BROWSERS or "APP-IOS" in env.TESTING_BROWSERS or "H5-Android" in env.TESTING_BROWSERS or "H5-iOS" in env.TESTING_BROWSERS:
             rerun_number = PublicImp.common.get_value_from_conf("rerun_num")
 
             k = 0

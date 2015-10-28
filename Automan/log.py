@@ -84,23 +84,23 @@ def generate_result_xls():
                 else:
                     sheet.write(i, 4, "NO RUN", style_other)
 
-                if "Android" in case:
-                    if case["Android"] == "Pass":
+                if "APP-Android" in case:
+                    if case["APP-Android"] == "Pass":
                         env.CaseSuccess += 1
-                        sheet.write(i, 5, case["Android"], style_green)
-                    elif case["Android"] == "Fail":
+                        sheet.write(i, 5, case["APP-Android"], style_green)
+                    elif case["APP-Android"] == "Fail":
                         env.CaseFail += 1
-                        sheet.write(i, 5, case["Android"], style_red)
+                        sheet.write(i, 5, case["APP-Android"], style_red)
                 else:
                     sheet.write(i, 5, "NO RUN", style_other)
 
-                if "IOS" in case:
-                    if case["IOS"] == "Pass":
+                if "APP-IOS" in case:
+                    if case["APP-IOS"] == "Pass":
                         env.CaseSuccess += 1
-                        sheet.write(i, 6, case["IOS"], style_green)
-                    elif case["IOS"] == "Fail":
+                        sheet.write(i, 6, case["APP-IOS"], style_green)
+                    elif case["APP-IOS"] == "Fail":
                         env.CaseFail += 1
-                        sheet.write(i, 6, case["IOS"], style_red)
+                        sheet.write(i, 6, case["APP-IOS"], style_red)
                 else:
                     sheet.write(i, 6, "NO RUN", style_other)
 

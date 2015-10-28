@@ -56,8 +56,8 @@ def generatehtml():
             <td bgColor=#C0C0C0 >Firefox</td>
             <td bgColor=#C0C0C0 >Chrome</td>
             <td bgColor=#C0C0C0 >Safari</td>
-            <td bgColor=#C0C0C0 >Android</td>
-            <td bgColor=#C0C0C0 >IOS</td>
+            <td bgColor=#C0C0C0 >APP-Android</td>
+            <td bgColor=#C0C0C0 >APP-IOS</td>
             <td bgColor=#C0C0C0 >H5-Android</td>
             <td bgColor=#C0C0C0 >H5-IOS</td>
         </tr>

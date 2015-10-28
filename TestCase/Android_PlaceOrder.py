@@ -9,8 +9,8 @@ from appium.webdriver.connectiontype import ConnectionType
 def testcase_Android_PlaceOrder():
 
     # 设置网络连接情况
-    PublicImp.env.driver.set_network_connection(ConnectionType.AIRPLANE_MODE)
-    PublicImp.env.driver.set_network_connection(ConnectionType.WIFI_ONLY)
+    # PublicImp.env.driver.set_network_connection(ConnectionType.AIRPLANE_MODE)
+    # PublicImp.env.driver.set_network_connection(ConnectionType.WIFI_ONLY)
 
     P_Login_out_android.Login_And_out.Login()
 
@@ -52,8 +52,10 @@ def testcase_Android_PlaceOrder():
     u""" 商品详情页-尺码、颜色选择页面-随机选择有库存的颜色、尺码-开始 """
     i = 0
     while i < 5:
-        PageImp.Page_Product_Detail.Page_Product_Detail.product_color.ClickList_App()
-        PageImp.Page_Product_Detail.Page_Product_Detail.product_size.ClickList_App()
+        if PageImp.Page_Product_Detail.Page_Product_Detail.product_color.GetObjectsCount() > 1:
+            PageImp.Page_Product_Detail.Page_Product_Detail.product_color.ClickList_App()
+        if PageImp.Page_Product_Detail.Page_Product_Detail.product_size.GetObjectsCount() > 1:
+            PageImp.Page_Product_Detail.Page_Product_Detail.product_size.ClickList_App()
         PublicImp.env.driver.switch_to.context("NATIVE_APP")
         PublicImp.env.driver.swipe(X_width, Y_height, X_width, 200)
         pro_num = PageImp.Page_Product_Detail.Page_Product_Detail.tv_pro_info_num.GetAttribute("text")

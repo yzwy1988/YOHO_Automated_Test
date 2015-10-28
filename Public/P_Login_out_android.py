@@ -9,8 +9,9 @@ class Login_And_out():
 
     @classmethod
     def Login(cls, account=None, password=None):
-        sleep(2)
-        PageImp.Page_HomeGuide.Page_HomeGuide.GoBoys.Click()
+
+        if PageImp.Page_HomeGuide.Page_HomeGuide.GoBoys.IsExist():
+            PageImp.Page_HomeGuide.Page_HomeGuide.GoBoys.Click()
         sleep(2)
         if PageImp.Page_Home.Page_Home.ad_close.IsExist():
             PageImp.Page_Home.Page_Home.ad_close.Click()

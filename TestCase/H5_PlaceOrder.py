@@ -9,7 +9,7 @@ from time import sleep
 def testcase_H5_PlaceOrder():
 
     # 按power键点亮屏幕
-    PublicImp.env.driver.sendKeyEvent(26)
+    # PublicImp.env.driver.sendKeyEvent(26)
 
     PageImp.Page_HomeGuide.Page_HomeGuide.GoBoys.Click()
 

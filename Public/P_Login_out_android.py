@@ -3,6 +3,7 @@
 from Page import PageImp
 from Automan import PublicImp
 from time import sleep
+from selenium.webdriver.support.ui import WebDriverWait
 
 
 class Login_And_out():
@@ -16,11 +17,10 @@ class Login_And_out():
 
         if PageImp.Page_Home.Page_Home.ad_close.IsExist():
             PageImp.Page_Home.Page_Home.ad_close.Click()
-        sleep(5)
 
+        sleep(5)
         if PageImp.Page_Home.Page_Home.update_cancel.IsExist():
             PageImp.Page_Home.Page_Home.update_cancel.Click()
-        sleep(3)
 
         PageImp.Page_Home.Page_Home.tabMain_my.Click()
         sleep(2)

@@ -12,10 +12,16 @@ class Login_And_out():
 
         if PageImp.Page_HomeGuide.Page_HomeGuide.GoBoys.IsExist():
             PageImp.Page_HomeGuide.Page_HomeGuide.GoBoys.Click()
-        sleep(2)
+        sleep(3)
+
         if PageImp.Page_Home.Page_Home.ad_close.IsExist():
             PageImp.Page_Home.Page_Home.ad_close.Click()
-        sleep(10)
+        sleep(5)
+
+        if PageImp.Page_Home.Page_Home.update_cancel.IsExist():
+            PageImp.Page_Home.Page_Home.update_cancel.Click()
+        sleep(3)
+
         PageImp.Page_Home.Page_Home.tabMain_my.Click()
         sleep(2)
 

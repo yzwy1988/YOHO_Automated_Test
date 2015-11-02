@@ -880,3 +880,20 @@ class WebElement:
         pages = env.driver.find_element_by_id(element_id)
         touch_actions = TouchActions(env.driver)
         touch_actions.flick_element(pages, x, y, speed).perform()
+
+    # APP列表中随机选择一个进行长按
+    @classmethod
+    def LongClickList_App(cls):
+        log.step_normal("Element [%s]: Do LongClickList_App()" % cls.__name__)
+
+        cls.__wait()
+        elements = env.driver.find_elements(cls.by, cls.value)
+        rd = random.randint(0, len(elements)-1)
+
+        actions = TouchActions(env.driver)
+        actions.long_press(elements[rd])
+        actions.perform()
+
+        time.sleep(3)
+        cls.__clearup()
+

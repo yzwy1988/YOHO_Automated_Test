@@ -74,7 +74,8 @@ def testcase_Android_PlaceOrder():
         PublicImp.env.driver.switch_to.context("NATIVE_APP")
         PublicImp.env.driver.swipe(X_width, Y_height, X_width, 200)
         pro_num = PageImp.Page_Product_Detail.Page_Product_Detail.tv_pro_info_num.GetAttribute("text")
-        if pro_num != 0:
+        print(type(pro_num))
+        if pro_num != "0":
             break
         else:
             continue

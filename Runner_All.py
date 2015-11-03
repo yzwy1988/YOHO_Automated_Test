@@ -9,20 +9,19 @@ from time import sleep
 def run_all_case():
     """测试用例运行总入口"""
 
+    currentpath = os.getcwdu()
+    source_name = PublicImp.common.get_value_from_conf_path("TESTING_BROWSERS_OR_DEVICES", currentpath)
+    if source_name.split("|")[0] in ("Chrome", "Firefox", "IE", "Safari"):
+        source = "Web"
+    elif source_name == "APP-Android":
+        source = "Android"
+    elif source_name == "APP-IOS":
+        source = "IOS"
+    elif source_name == "H5-Android" or source_name == "H5-iOS":
+        source = "H5"
+
     for filename in os.listdir("TestCase"):
         filepath = os.getcwd() + "\\TestCase\\" + filename
-
-        currentpath = os.getcwdu()
-        source_name = PublicImp.common.get_value_from_conf_path("TESTING_BROWSERS_OR_DEVICES", currentpath)
-        if source_name.split("|")[0] in ("Chrome", "Firefox", "IE", "Safari"):
-            source = "Web"
-        elif source_name == "APP-Android":
-            source = "Android"
-        elif source_name == "APP-IOS":
-            source = "IOS"
-        elif source_name == "H5-Android" or source_name == "H5-iOS":
-            source = "H5"
-
         if os.path.isdir(filepath):
             for filename2 in os.listdir(filepath):
                 if filename2.split("_")[0] == source and os.path.splitext(filename2)[1] == '.py':
@@ -44,10 +43,6 @@ def run_all_case():
 Executer_Date = PublicImp.common.stamp_date()
 StartTime = PublicImp.common.stamp_date_nomal()
 
-# 启动Appium Server服务
-# PublicImp.AppiumServer.AppiumServer.startServer()
-# sleep(5)
-
 # 创建PageObject文件
 print("=> Generating PageObjects py file from mysql ...")
 PublicImp.CreatePageFromDB.create_page_from_db()
@@ -65,6 +60,3 @@ PublicImp.env.ExecuterDate = Executer_Date
 
 # 发送测试报告邮件
 PublicImp.sendreport.sendreport()
-
-# 关闭Appium Server服务
-# PublicImp.AppiumServer.AppiumServer.stopServer()

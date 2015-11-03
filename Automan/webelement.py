@@ -121,6 +121,34 @@ class WebBrowser:
         except:
             pass
 
+    @classmethod
+    def swipeToUp(cls, during):
+        """ This Method for swipe up """
+        width = env.driver.manage().window().getSize().width
+        height = env.driver.manage().window().getSize().height
+        env.driver.swipe(width / 2, height * 3 / 4, width / 2, height / 4, during)
+
+    @classmethod
+    def swipeToDown(cls, during):
+        """ This Method for swipe down """
+        width = env.driver.manage().window().getSize().width
+        height = env.driver.manage().window().getSize().height
+        env.driver.swipe(width / 2, height / 4, width / 2, height * 3 / 4, during)
+
+    @classmethod
+    def swipeToLeft(cls, during):
+        """ This Method for swipe Left """
+        width = env.driver.manage().window().getSize().width
+        height = env.driver.manage().window().getSize().height
+        env.driver.swipe(width * 3 / 4, height / 2, width / 4, height / 2, during)
+
+    @classmethod
+    def swipeToRight(cls, during):
+        """ This Method for swipe Right """
+        width = env.driver.manage().window().getSize().width
+        height = env.driver.manage().window().getSize().height
+        env.driver.swipe(width / 4, height / 2, width * 3 / 4, height / 2, during)
+
 
 class WebElement:
     (by, value) = (None, None)

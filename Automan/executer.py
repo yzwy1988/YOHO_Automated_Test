@@ -198,10 +198,10 @@ def run_module(dirname, module_name):
             k = 0
             while k < int(rerun_number):
                 RUNNING_PASS_OR_FAIL = env.RUNNING_PASS_OR_FAIL
-                if RUNNING_PASS_OR_FAIL == False:
+                if RUNNING_PASS_OR_FAIL is False:
                     print("=> %s Runs %s Times in ** %s ** " % (testcase, (k+1), env.TESTING_BROWSERS))
 
-                    if launch_device() == False:
+                    if launch_device() is False:
                         continue
 
                     # Run Test Case.
@@ -232,14 +232,14 @@ def run_module(dirname, module_name):
                 k = 0
                 while k < int(rerun_number):
                     RUNNING_PASS_OR_FAIL = env.RUNNING_PASS_OR_FAIL
-                    if RUNNING_PASS_OR_FAIL == False:
+                    if RUNNING_PASS_OR_FAIL is False:
                         print("=> %s Runs %s Times in ** %s ** " % (testcasename, (k+1), env.RUNNING_BROWSER))
 
                         # Launch Browser
                         if "before_launch_browser" in testcases:
                             getattr(testmodule, "before_launch_browser")()
 
-                        if launch_browser() == False:
+                        if launch_browser() is False:
                             continue
 
                         # Run Test Case.

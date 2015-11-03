@@ -175,6 +175,11 @@ def testcase_Android_PlaceOrder():
     # 送货时间--随机选择一个送货时间;
     PageImp.Page_Confirm_Order.Page_Confirm_Order.send_time_3.Click()
 
+    u""" 确定订单页-向上滑动 """
+    PublicImp.env.driver.switch_to.context("NATIVE_APP")
+    PublicImp.env.driver.swipe(X_width, Y_height, X_width, 200)
+    sleep(2)
+
     u""" 结算页面--发票/备注 """
     PageImp.Page_Confirm_Order.Page_Confirm_Order.receipt_toggle.Click()
 

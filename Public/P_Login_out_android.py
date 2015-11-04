@@ -22,6 +22,7 @@ class Login_And_out():
         if PageImp.Page_Home.Page_Home.update_cancel.IsExist():
             PageImp.Page_Home.Page_Home.update_cancel.Click()
 
+        sleep(5)
         PageImp.Page_Home.Page_Home.tabMain_my.Click()
         sleep(2)
 

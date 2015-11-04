@@ -44,7 +44,6 @@ def testcase_Android_PlaceOrder():
     height = PublicImp.env.driver.get_window_size()['height']
     X_width = width/2
     Y_height = height - 200
-    print(width, height)
 
     PublicImp.env.driver.switch_to.context("NATIVE_APP")
     PublicImp.env.driver.swipe(X_width, Y_height, X_width, 200)
@@ -52,7 +51,7 @@ def testcase_Android_PlaceOrder():
     PublicImp.env.driver.swipe(X_width, Y_height, X_width, 200)
 
     PageImp.Page_Home.Page_Home.New_Products.ClickList_App()
-    sleep(3)
+    sleep(5)
 
     if PageImp.Page_Product_Detail.Page_Product_Detail.product_detail_add.IsExist():
         PageImp.Page_Product_Detail.Page_Product_Detail.product_detail_add.Click()
@@ -120,12 +119,14 @@ def testcase_Android_PlaceOrder():
     if addresscount > 0:
         # 随机选择一个收货地址;
         # PageImp.Page_Confirm_Order.Page_Confirm_Order.AddressList_addressname.ClickList_App()
-        if addresscount >= 5:
+        while addresscount >= 5:
             # 收货地址列表数据大于等于5个情况下
             PageImp.Page_Confirm_Order.Page_Confirm_Order.address_manager.Click()
             PageImp.Page_Confirm_Order.Page_Confirm_Order.AddressList_addressname.LongClickList_App()
             PageImp.Page_Confirm_Order.Page_Confirm_Order.ConfirmButton.Click()
             PageImp.Page_Confirm_Order.Page_Confirm_Order.backbtn.Click()
+            addresscount = PageImp.Page_Confirm_Order.Page_Confirm_Order.AddressList_addressname.GetObjectsCount()
+
 
         PageImp.Page_Confirm_Order.Page_Confirm_Order.AddNewAdress.Click()
         PageImp.Page_Confirm_Order.Page_Confirm_Order.name.Set(unicode("测试_%s" % datetime.datetime.now().strftime("%Y%m%d_%H%M%S")))

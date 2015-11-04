@@ -80,8 +80,19 @@ def launch_browser():
 def launch_device():
     if env.TESTING_BROWSERS == 'APP-Android':
         desired_caps = {}
+
+        xls = PublicImp.datadriver.ExcelSheet("TeseCaseDescription.xlsx", "TeseCaseDescription")
+        for j in range(1, xls.nrows()):
+            PublicImp.log.step_section("Execute TeseCaseDescription Excel Date: Line [%s]" % j)
+            tescaseName = xls.cell(j, "TeseCaseName")
+            if tescaseName == env.MODULE_NAME:
+                appium_server_ip = xls.cell(j, "appium_server_ip")
+                appium_server_port = xls.cell(j, "appium_server_port")
+                udid = xls.cell(j, "udid")
+                platformVersion = xls.cell(j, "AndroidVersion")
+
         platformName = PublicImp.common.get_value_from_conf("TESTING_BROWSERS_OR_DEVICES")
-        platformVersion = PublicImp.common.get_value_from_conf("platformVersion")
+        # platformVersion = PublicImp.common.get_value_from_conf("platformVersion")
         deviceName = PublicImp.common.get_value_from_conf("deviceName")
         appPackage = PublicImp.common.get_value_from_conf("appPackage")
         appActivity = PublicImp.common.get_value_from_conf("appActivity")
@@ -93,6 +104,7 @@ def launch_device():
         desired_caps['deviceName'] = deviceName
         desired_caps['appPackage'] = appPackage
         desired_caps['appActivity'] = appActivity
+        desired_caps['udid'] = udid
         desired_caps["unicodeKeyboard"] = unicodeKeyboard
         desired_caps["resetKeyboard"] = resetKeyboard
 
@@ -149,7 +161,7 @@ def launch_device():
 
         env.platformName = platformName
 
-    env.driver = webdriver.Remote('http://localhost:4723/wd/hub', desired_caps)
+    env.driver = webdriver.Remote('http://%s:%s/wd/hub' % (appium_server_ip, appium_server_port), desired_caps)
 
     if env.TESTING_BROWSERS == 'H5-Android' or env.TESTING_BROWSERS == 'H5-iOS':
         env.driver.get("http://m.yohobuy.com")

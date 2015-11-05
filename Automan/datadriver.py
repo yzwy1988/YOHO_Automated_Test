@@ -43,5 +43,5 @@ class ExcelSheet:
     def cell(self, rowx, col_name):
         for colx in range(0, self.ncols()):
             if self.cellxy(0, colx) == col_name:
-                log.step_normal("ExcelSheet.cellx(%s, %s)=[%s]" % (rowx, col_name, self.cellxy(rowx, colx)))
+                # log.step_normal("ExcelSheet.cellx(%s, %s)=[%s]" % (rowx, col_name, self.cellxy(rowx, colx)))
                 return self.cellxy(rowx, colx)

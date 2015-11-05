@@ -8,7 +8,7 @@ from time import sleep
 import datetime
 
 
-def testcase_Android_PlaceOrder():
+def testcase_Android_PlaceOrder_1():
 
     # 设置网络连接情况
     # PublicImp.env.driver.set_network_connection(ConnectionType.AIRPLANE_MODE)
@@ -44,22 +44,28 @@ def testcase_Android_PlaceOrder():
     height = PublicImp.env.driver.get_window_size()['height']
     X_width = width/2
     Y_height = height - 200
-    print(width, height)
 
-    PublicImp.env.driver.switch_to.context("NATIVE_APP")
-    PublicImp.env.driver.swipe(X_width, Y_height, X_width, 200)
+    # PublicImp.env.driver.switch_to.context("NATIVE_APP")
+    # PublicImp.env.driver.swipe(X_width, Y_height, X_width, 200)
+
+    PublicImp.webelement.WebBrowser.swipeToUp(500)
     sleep(2)
-    PublicImp.env.driver.swipe(X_width, Y_height, X_width, 200)
+    PublicImp.webelement.WebBrowser.swipeToUp(500)
 
     PageImp.Page_Home.Page_Home.New_Products.ClickList_App()
-    sleep(3)
+    sleep(5)
 
     if PageImp.Page_Product_Detail.Page_Product_Detail.product_detail_add.IsExist():
-        PageImp.Page_Product_Detail.Page_Product_Detail.product_detail_add.Click()
+        pass
+    elif PageImp.Page_Home.Page_Home.New_Products.IsExist():
+        PublicImp.webelement.WebBrowser.swipeToUp(500)
+        PageImp.Page_Home.Page_Home.New_Products.ClickList_App()
+        sleep(5)
     else:
         PageImp.Page_Product_Detail.Page_Product_Detail.back_imgbtn.Click()
         PageImp.Page_Home.Page_Home.New_Products.ClickList_App()
-        PageImp.Page_Product_Detail.Page_Product_Detail.product_detail_add.Click()
+        sleep(5)
+    PageImp.Page_Product_Detail.Page_Product_Detail.product_detail_add.Click()
 
     u""" 商品详情页-尺码、颜色选择页面-随机选择有库存的颜色、尺码-开始 """
     i = 0
@@ -71,18 +77,21 @@ def testcase_Android_PlaceOrder():
             PageImp.Page_Product_Detail.Page_Product_Detail.product_color.ClickList_App()
             PageImp.Page_Product_Detail.Page_Product_Detail.product_size.ClickList_App()
 
-        PublicImp.env.driver.switch_to.context("NATIVE_APP")
-        PublicImp.env.driver.swipe(X_width, Y_height, X_width, 200)
+        PublicImp.webelement.WebBrowser.swipeToUp(500)
         pro_num = PageImp.Page_Product_Detail.Page_Product_Detail.tv_pro_info_num.GetAttribute("text")
-        print(type(pro_num))
         if pro_num != "0":
-            break
+            PageImp.Page_Product_Detail.Page_Product_Detail.pro_info_submit.Click()
+            sleep(5)
+            if PageImp.Page_Product_Detail.Page_Product_Detail.pro_info_submit.IsExist():
+                continue
+            else:
+                break
         else:
             continue
     u""" 商品详情页-尺码、颜色选择页面-随机选择有库存的颜色、尺码-结束 """
 
-    PageImp.Page_Product_Detail.Page_Product_Detail.pro_info_submit.Click()
-    sleep(5)
+    # PageImp.Page_Product_Detail.Page_Product_Detail.pro_info_submit.Click()
+    # sleep(5)
     PageImp.Page_Product_Detail.Page_Product_Detail.shop_cart.Click()
 
     u""" 购物车列表-选择赠品-开始 """
@@ -94,8 +103,7 @@ def testcase_Android_PlaceOrder():
         while i <= 5:
             PageImp.Page_Product_Detail.Page_Product_Detail.product_color.ClickList_App()
             PageImp.Page_Product_Detail.Page_Product_Detail.product_size.ClickList_App()
-            PublicImp.env.driver.switch_to.context("NATIVE_APP")
-            PublicImp.env.driver.swipe(X_width, Y_height, X_width, 200)
+            PublicImp.webelement.WebBrowser.swipeToUp(500)
             pro_num = PageImp.Page_Product_Detail.Page_Product_Detail.tv_pro_info_num.GetAttribute("text")
             if pro_num != 0:
                 break
@@ -120,12 +128,13 @@ def testcase_Android_PlaceOrder():
     if addresscount > 0:
         # 随机选择一个收货地址;
         # PageImp.Page_Confirm_Order.Page_Confirm_Order.AddressList_addressname.ClickList_App()
-        if addresscount >= 5:
+        while addresscount >= 5:
             # 收货地址列表数据大于等于5个情况下
             PageImp.Page_Confirm_Order.Page_Confirm_Order.address_manager.Click()
             PageImp.Page_Confirm_Order.Page_Confirm_Order.AddressList_addressname.LongClickList_App()
             PageImp.Page_Confirm_Order.Page_Confirm_Order.ConfirmButton.Click()
             PageImp.Page_Confirm_Order.Page_Confirm_Order.backbtn.Click()
+            addresscount = PageImp.Page_Confirm_Order.Page_Confirm_Order.AddressList_addressname.GetObjectsCount()
 
         PageImp.Page_Confirm_Order.Page_Confirm_Order.AddNewAdress.Click()
         PageImp.Page_Confirm_Order.Page_Confirm_Order.name.Set(unicode("测试_%s" % datetime.datetime.now().strftime("%Y%m%d_%H%M%S")))
@@ -176,16 +185,14 @@ def testcase_Android_PlaceOrder():
     PageImp.Page_Confirm_Order.Page_Confirm_Order.send_time_3.Click()
 
     u""" 确定订单页-向上滑动 """
-    PublicImp.env.driver.switch_to.context("NATIVE_APP")
-    PublicImp.env.driver.swipe(X_width, Y_height, X_width, 200)
+    PublicImp.webelement.WebBrowser.swipeToUp(500)
     sleep(2)
 
     u""" 结算页面--发票/备注 """
     PageImp.Page_Confirm_Order.Page_Confirm_Order.receipt_toggle.Click()
 
     u""" 确定订单页-向上滑动 """
-    PublicImp.env.driver.switch_to.context("NATIVE_APP")
-    PublicImp.env.driver.swipe(X_width, Y_height, X_width, 200)
+    PublicImp.webelement.WebBrowser.swipeToUp(500)
     sleep(2)
 
     PageImp.Page_Confirm_Order.Page_Confirm_Order.invoices_title.Set(unicode("发票抬头--测试"))
@@ -206,12 +213,11 @@ def testcase_Android_PlaceOrder():
     sleep(5)
 
     if PageImp.Page_Confirm_Order.Page_Confirm_Order.dialog_message.IsExist():
-        PublicImp.env.driver.swipe(X_width, Y_height+200, X_width, 0)
         PageImp.Page_Confirm_Order.Page_Confirm_Order.dialog_ok.Click()
+        PublicImp.webelement.WebBrowser.swipeToDown(500)
         PageImp.Page_Confirm_Order.Page_Confirm_Order.deliveryway.Click()
         PageImp.Page_Confirm_Order.Page_Confirm_Order.NormalDelivery.Click()
-        PublicImp.env.driver.switch_to.context("NATIVE_APP")
-        PublicImp.env.driver.swipe(X_width, Y_height, X_width, 200)
+        PublicImp.webelement.WebBrowser.swipeToUp(500)
         PageImp.Page_Confirm_Order.Page_Confirm_Order.ConfirmOrder_make_sure_order.Click()
         sleep(5)
 

@@ -83,7 +83,7 @@ def launch_device():
 
         xls = PublicImp.datadriver.ExcelSheet("TeseCaseDescription.xlsx", "TeseCaseDescription")
         for j in range(1, xls.nrows()):
-            PublicImp.log.step_section("Execute TeseCaseDescription Excel Date: Line [%s]" % j)
+            # PublicImp.log.step_section("Execute TeseCaseDescription Excel Date: Line [%s]" % j)
             tescaseName = xls.cell(j, "TeseCaseName")
             if tescaseName == env.MODULE_NAME:
                 appium_server_ip = xls.cell(j, "appium_server_ip")

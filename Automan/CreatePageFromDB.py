@@ -5,7 +5,6 @@ import time
 import common
 import DBUtil
 import sys
-import string
 reload(sys)
 sys.setdefaultencoding('utf8')
 
@@ -51,7 +50,7 @@ def create_page_from_db():
     print(portfromconf, hostfromconf, type(portfromconf))
 
     dbconfig = {'host': hostfromconf,
-                'port': string.atoi(portfromconf),
+                'port': (int)(portfromconf),
                 'user': userfromconf,
                 'passwd': passwdfromconf,
                 'db': dbfromconf,

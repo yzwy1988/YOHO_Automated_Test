@@ -49,7 +49,7 @@ def create_page_from_db():
     charsetfromconf = common.get_value_from_conf_path("charset", currentPath)
 
     dbconfig = {'host': hostfromconf,
-                'port': int(portfromconf),
+                'port': portfromconf,
                 'user': userfromconf,
                 'passwd': passwdfromconf,
                 'db': dbfromconf,

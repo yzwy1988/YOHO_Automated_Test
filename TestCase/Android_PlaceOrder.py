@@ -80,13 +80,18 @@ def testcase_Android_PlaceOrder():
         PublicImp.webelement.WebBrowser.swipeToUp(500)
         pro_num = PageImp.Page_Product_Detail.Page_Product_Detail.tv_pro_info_num.GetAttribute("text")
         if pro_num != "0":
-            break
+            PageImp.Page_Product_Detail.Page_Product_Detail.pro_info_submit.Click()
+            sleep(5)
+            if PageImp.Page_Product_Detail.Page_Product_Detail.pro_info_submit.IsExist():
+                continue
+            else:
+                break
         else:
             continue
     u""" 商品详情页-尺码、颜色选择页面-随机选择有库存的颜色、尺码-结束 """
 
-    PageImp.Page_Product_Detail.Page_Product_Detail.pro_info_submit.Click()
-    sleep(5)
+    # PageImp.Page_Product_Detail.Page_Product_Detail.pro_info_submit.Click()
+    # sleep(5)
     PageImp.Page_Product_Detail.Page_Product_Detail.shop_cart.Click()
 
     u""" 购物车列表-选择赠品-开始 """

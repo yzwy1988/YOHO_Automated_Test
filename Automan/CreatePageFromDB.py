@@ -42,11 +42,12 @@ def create_page_from_db():
     removefileinfirstfir(targetDir)
 
     hostfromconf = common.get_value_from_conf_path("host", currentPath)
-    portfromconf = common.get_value_from_conf_path("port", currentPath)
+    portfromconf = int(common.get_value_from_conf_path("port", currentPath))
     userfromconf = common.get_value_from_conf_path("user", currentPath)
     passwdfromconf = common.get_value_from_conf_path("passwd", currentPath)
     dbfromconf = common.get_value_from_conf_path("db", currentPath)
     charsetfromconf = common.get_value_from_conf_path("charset", currentPath)
+    print(portfromconf, hostfromconf, type(portfromconf))
 
     dbconfig = {'host': hostfromconf,
                 'port': int(portfromconf),

@@ -2,7 +2,6 @@
 
 from Automan import PublicImp
 import os
-from time import sleep
 
 
 # PC/APP/H5

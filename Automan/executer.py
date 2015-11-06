@@ -78,18 +78,18 @@ def launch_browser():
 
 
 def launch_device():
+
+    xls = PublicImp.datadriver.ExcelSheet("TeseCaseDescription.xlsx", "TeseCaseDescription")
+    for j in range(1, xls.nrows()):
+        tescaseName = xls.cell(j, "TeseCaseName")
+        if tescaseName == env.MODULE_NAME:
+            appium_server_ip = xls.cell(j, "appium_server_ip")
+            appium_server_port = xls.cell(j, "appium_server_port")
+            udid = xls.cell(j, "udid")
+            platformVersion = xls.cell(j, "AndroidVersion")
+
     if env.TESTING_BROWSERS == 'APP-Android':
         desired_caps = {}
-
-        xls = PublicImp.datadriver.ExcelSheet("TeseCaseDescription.xlsx", "TeseCaseDescription")
-        for j in range(1, xls.nrows()):
-            tescaseName = xls.cell(j, "TeseCaseName")
-            if tescaseName == env.MODULE_NAME:
-                appium_server_ip = xls.cell(j, "appium_server_ip")
-                appium_server_port = xls.cell(j, "appium_server_port")
-                udid = xls.cell(j, "udid")
-                platformVersion = xls.cell(j, "AndroidVersion")
-
         platformName = PublicImp.common.get_value_from_conf("TESTING_BROWSERS_OR_DEVICES")
         # platformVersion = PublicImp.common.get_value_from_conf("platformVersion")
         deviceName = PublicImp.common.get_value_from_conf("deviceName")
@@ -133,7 +133,7 @@ def launch_device():
     elif env.TESTING_BROWSERS == 'H5-Android':
         desired_caps = {}
         platformName = PublicImp.common.get_value_from_conf("TESTING_BROWSERS_OR_DEVICES")
-        platformVersion = PublicImp.common.get_value_from_conf("platformVersion")
+        # platformVersion = PublicImp.common.get_value_from_conf("platformVersion")
         deviceName = PublicImp.common.get_value_from_conf("deviceName")
         browserName = PublicImp.common.get_value_from_conf("browserName")
         DevicesUrl = PublicImp.common.get_value_from_conf("DevicesUrl")
@@ -142,6 +142,7 @@ def launch_device():
         desired_caps['platformVersion'] = platformVersion
         desired_caps['deviceName'] = deviceName
         desired_caps["browserName"] = browserName
+        desired_caps['udid'] = udid
 
         env.platformName = platformName
 

@@ -925,3 +925,18 @@ class WebElement:
         time.sleep(3)
         cls.__clearup()
 
+    # APP列表中进行tap点击
+    @classmethod
+    def Tap_App(cls):
+        log.step_normal("Element [%s]: Do Tap_App()" % cls.__name__)
+
+        cls.__wait()
+        element = env.driver.find_elements(cls.by, cls.value)
+
+        actions = TouchActions(env.driver)
+        actions.tap(element)
+        actions.perform()
+
+        time.sleep(3)
+        cls.__clearup()
+

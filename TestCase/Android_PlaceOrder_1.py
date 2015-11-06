@@ -69,7 +69,7 @@ def testcase_Android_PlaceOrder_1():
 
     u""" 商品详情页-尺码、颜色选择页面-随机选择有库存的颜色、尺码-开始 """
     i = 0
-    while i < 5:
+    while i < 10:
         if PageImp.Page_Product_Detail.Page_Product_Detail.product_size.GetObjectsCount() > 1:
             PageImp.Page_Product_Detail.Page_Product_Detail.product_color.ClickList_App()
             PageImp.Page_Product_Detail.Page_Product_Detail.product_size.ClickList_App()
@@ -106,9 +106,14 @@ def testcase_Android_PlaceOrder_1():
             PublicImp.webelement.WebBrowser.swipeToUp(500)
             pro_num = PageImp.Page_Product_Detail.Page_Product_Detail.tv_pro_info_num.GetAttribute("text")
             if pro_num != 0:
-                break
+                PageImp.Page_Product_Detail.Page_Product_Detail.pro_info_submit.Click()
+                sleep(5)
+                if PageImp.Page_Product_Detail.Page_Product_Detail.pro_info_submit.IsExist():
+                    continue
+                else:
+                    break
 
-        PageImp.Page_Product_Detail.Page_Product_Detail.pro_info_submit.Click()
+        # PageImp.Page_Product_Detail.Page_Product_Detail.pro_info_submit.Click()
     u""" 购物车列表-选择赠品-结束 """
 
     u""" 购物车列表-选择加价购-开始 """
@@ -165,9 +170,9 @@ def testcase_Android_PlaceOrder_1():
     u""" 购物车列表-支付方式-开始 """
     PageImp.Page_Confirm_Order.Page_Confirm_Order.payway.Click()
     # 支付方式--在线支付(推荐)
-    # PageImp.Page_Confirm_Order.Page_Confirm_Order.OnlinePayment.Click()
+    PageImp.Page_Confirm_Order.Page_Confirm_Order.OnlinePayment.Click()
     # 支付方式--货到付款
-    PageImp.Page_Confirm_Order.Page_Confirm_Order.COD.Click()
+    # PageImp.Page_Confirm_Order.Page_Confirm_Order.COD.Click()
 
     u""" 购物车列表-配送方式-开始 """
     PageImp.Page_Confirm_Order.Page_Confirm_Order.deliveryway.Click()

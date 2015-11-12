@@ -57,8 +57,12 @@ def testcase_placeorder_5():
     goodname = PageImp.Page_GoodsDetails.Page_GoodsDetails.Goods_Name.GetInnerHTML()
 
     # 商品详情页面,点击 添加到购物车按钮
+    if PageImp.Page_GoodsDetails.Page_GoodsDetails.BuyClickButton.IsExist():
+        pass
+    else:
+        sleep(10)
     PageImp.Page_GoodsDetails.Page_GoodsDetails.BuyClickButton.Click()
-    sleep(2)
+    sleep(3)
 
     # 点击 去购物车结算 按钮,进入购物车列表页面
     PageImp.Page_GoodsDetails.Page_GoodsDetails.GotoCartButton.Click()

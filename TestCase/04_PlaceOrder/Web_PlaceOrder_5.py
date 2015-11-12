@@ -79,7 +79,11 @@ def testcase_placeorder_5():
     PageImp.Page_PersonalCenter.Page_PersonalCenter.Menu_MyFavorite.Click()
 
     # 个人中心--我的收藏--验证收藏是否正确;
-    PageImp.Page_PersonalCenter.Page_PersonalCenter.GetGoodName.VerifyInnerHTMLContains(goodname)
+    personcentergoodname = PageImp.Page_PersonalCenter.Page_PersonalCenter.GetGoodName.GetInnerHTML()
+    if personcentergoodname in goodname:
+        PublicImp.log.step_pass(u"购物车移入收藏夹功能验证成功!")
+    else:
+        PublicImp.log.step_fail(u"购物车移入收藏夹功能验证失败!")
 
     # 调用公共登录组件退出系统;
     P_Login_out_web.Login_and_out.Logout()

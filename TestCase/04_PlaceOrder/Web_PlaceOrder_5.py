@@ -33,11 +33,13 @@ def testcase_placeorder_5():
     # 网站首页点击品牌一览,进入品牌列表页面
     PageImp.Page_Home.Page_Home.Brand_View.Click()
     sleep(3)
+
+    PageImp.Page_BrandList.Page_BrandList.Blist.ClickList()
     # 品牌列表页面,点击品牌快速导航中的N字母
-    PageImp.Page_BrandList.Page_BrandList.brands_By_N.Click()
-    sleep(3)
+    # PageImp.Page_BrandList.Page_BrandList.brands_By_N.Click()
+    # sleep(3)
     # 点击Nike品牌,进入商品列表页面
-    PageImp.Page_BrandList.Page_BrandList.Nike_brands.Click()
+    # PageImp.Page_BrandList.Page_BrandList.Nike_brands.Click()
     sleep(5)
 
     # 商品列表页面,点击列表中商品,进入商品详情页面

@@ -256,6 +256,8 @@ def testcase_Android_PlaceOrder_1():
         while i > 0:
             PageImp.Page_PersonCenter.Page_PersonCenter.order_item_cancel_btn.ClickList_App()
             PageImp.Page_PersonCenter.Page_PersonCenter.order_dialog_confirm_btn.Click()
+            sleep(3)
+            PublicImp.webelement.WebBrowser.swipeToDown(500)
             i = PageImp.Page_PersonCenter.Page_PersonCenter.order_item_cancel_btn.GetObjectsCount()
 
     PageImp.Page_PersonCenter.Page_PersonCenter.order_back_imgbtn.Click()

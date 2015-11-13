@@ -30,6 +30,16 @@ def generatehtml():
     db = DBUtil.MySQL(dbconfig)
 
     Running_Browser_Devices = common.get_value_from_conf("TESTING_BROWSERS_OR_DEVICES")
+    if Running_Browser_Devices.split("|")[0] in ("Chrome", "Firefox", "IE", "Safari"):
+        source = "PC-Web"
+    elif Running_Browser_Devices == "APP-Android":
+        source = "APP-Android"
+    elif Running_Browser_Devices == "APP-IOS":
+        source = "APP-IOS"
+    elif Running_Browser_Devices == "H5-Android":
+        source = "H5-Android"
+    elif Running_Browser_Devices == "H5-iOS":
+        source = "H5-iOS"
 
     precent = round(float(env.CaseSuccess)/(env.CaseSuccess + env.CaseFail), 4)*100
 
@@ -38,7 +48,7 @@ def generatehtml():
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
     <table border="1" style="width: 100%;text-align: center;" cellspacing="0" cellpadding="0">
         <tr>
-            <td colspan="11"><font face="微软雅黑" size="4" ><strong>YOHO Automated Test Report</strong></font></td>
+            <td colspan="11"><font face="微软雅黑" size="4" ><strong>YOHO """ + source + """ Automated Test Report</strong></font></td>
         </tr>
         <tr align="left">
             <td colspan="11"><font color="blue">→Executer_Date： """ + env.ExecuterDate + """</font> <br>

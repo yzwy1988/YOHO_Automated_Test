@@ -20,6 +20,18 @@ def sendmail(file_new):
     smtp_login_name = common.get_value_from_conf("smtp_login_name")
     smtp_login_password = common.get_value_from_conf("smtp_login_password")
 
+    Running_Browser_Devices = common.get_value_from_conf("TESTING_BROWSERS_OR_DEVICES")
+    if Running_Browser_Devices.split("|")[0] in ("Chrome", "Firefox", "IE", "Safari"):
+        source = "PC-Web"
+    elif Running_Browser_Devices == "APP-Android":
+        source = "APP-Android"
+    elif Running_Browser_Devices == "APP-IOS":
+        source = "APP-IOS"
+    elif Running_Browser_Devices == "H5-Android":
+        source = "H5-Android"
+    elif Running_Browser_Devices == "H5-iOS":
+        source = "H5-iOS"
+
     for mail_to in mailto.split('|'):
         f = open(file_new, 'rb')
         mail_body = f.read()
@@ -46,7 +58,7 @@ def sendmail(file_new):
         att3["Content-Disposition"] = 'attachment; filename="YOHO_autotest_result.xls"'
         msgRoot.attach(att3)
 
-        msgRoot['Subject'] = u"YOHO Automated Test Report ( %s )" % env.ExecuterDate
+        msgRoot['Subject'] = u"YOHO %s Automated Test Report ( %s )" % (source, env.ExecuterDate)
         msgRoot['date'] = time.strftime('%a, %d %b %Y %H:%M:%S %z')
         smtp = smtplib.SMTP()
         smtp.connect(smtp_server)

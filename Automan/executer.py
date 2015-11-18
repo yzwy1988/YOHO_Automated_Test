@@ -172,6 +172,8 @@ def launch_device():
 def testcase_ending():
     time.sleep(3)
     env.driver.quit()
+    # os.popen("taskkill /f /im cmd.exe")
+    # os.popen("taskkill /f /im node.exe")
 
 
 def testcase_windingup():
@@ -229,7 +231,7 @@ def run_module(dirname, module_name):
                         PublicImp.log.stop_test()
                     # print("=> Now end the test case %s " % testcase)
 
-                    testcase_ending()
+                    # testcase_ending()
 
                 k += 1
 

@@ -8,7 +8,7 @@ from time import sleep
 import datetime
 
 
-def testcase_Android_PlaceOrder():
+def testcase_Android_PlaceOrder_CancelOrder():
 
     P_Login_out_android.Login_And_out.Login()
 

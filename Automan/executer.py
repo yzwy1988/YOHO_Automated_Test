@@ -165,6 +165,7 @@ def launch_device():
 
     if env.TESTING_BROWSERS == 'H5-Android' or env.TESTING_BROWSERS == 'H5-iOS':
         env.driver.get("http://m.yohobuy.com")
+        env.driver.implicitly_wait(10)
 
     return True
 
@@ -231,7 +232,7 @@ def run_module(dirname, module_name):
                         PublicImp.log.stop_test()
                     # print("=> Now end the test case %s " % testcase)
 
-                    # testcase_ending()
+                    testcase_ending()
 
                 k += 1
 

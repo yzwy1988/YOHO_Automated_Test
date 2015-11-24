@@ -819,7 +819,7 @@ class WebElement:
                 # print(u"[Find Element Fail !]  =>  ")
 
             if len(elements) == 0:
-                time.sleep(2)
+                # time.sleep(2)
                 log.step_normal("Element [%s] Find Fail, Wait 2 Seconds, By [%s :: %s :: %s]" % (cls.__name__, cls.by, cls.value, cls.index))
             else:
                 if len(elements) > 1:
@@ -927,16 +927,15 @@ class WebElement:
 
     # APP列表中进行tap点击
     @classmethod
-    def Tap_App(cls):
+    def Tap_App(cls, x, y):
         log.step_normal("Element [%s]: Do Tap_App()" % cls.__name__)
 
         cls.__wait()
         element = env.driver.find_elements(cls.by, cls.value)
 
         actions = TouchActions(env.driver)
-        actions.tap(element)
+        actions.tap(element, x, y)
         actions.perform()
 
         time.sleep(3)
         cls.__clearup()
-

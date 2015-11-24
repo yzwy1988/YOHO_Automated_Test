@@ -58,7 +58,12 @@ def sendmail(file_new):
         att3["Content-Disposition"] = 'attachment; filename="YOHO_autotest_result.xls"'
         msgRoot.attach(att3)
 
-        msgRoot['Subject'] = u"YOHO %s Automated Test Report ( %s )" % (source, env.ExecuterDate)
+        failnum = str(env.CaseFail)
+        print(failnum)
+        if failnum >= 1:
+            msgRoot['Subject'] = u"[%s Fail] YOHO %s Automated Test Report ( %s )" % (failnum, source, env.ExecuterDate)
+        else:
+            msgRoot['Subject'] = u"YOHO %s Automated Test Report ( %s )" % (source, env.ExecuterDate)
         msgRoot['date'] = time.strftime('%a, %d %b %Y %H:%M:%S %z')
         smtp = smtplib.SMTP()
         smtp.connect(smtp_server)

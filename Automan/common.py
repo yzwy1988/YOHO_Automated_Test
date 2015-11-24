@@ -5,6 +5,8 @@ import os
 import sys
 import inspect
 import env
+from appium import webdriver
+from appium.webdriver.connectiontype import ConnectionType
 
 
 def stamp_date_nomal():
@@ -170,5 +172,28 @@ def get_value_from_conf_path(key, path):
         return ""
 
 
+def set_network_connection(value):
+    """
+       设置网络连接情况：
+       PublicImp.env.driver.set_network_connection(ConnectionType.AIRPLANE_MODE)
+       PublicImp.env.driver.set_network_connection(ConnectionType.WIFI_ONLY)
+    """
+    if value == 0:
+        webdriver.Remote.set_network_connection(ConnectionType.NO_CONNECTION)
+    elif value == 1:
+        webdriver.Remote.set_network_connection(ConnectionType.AIRPLANE_MODE)
+    elif value == 2:
+        webdriver.Remote.set_network_connection(ConnectionType.WIFI_ONLY)
+    elif value == 4:
+        webdriver.Remote.set_network_connection(ConnectionType.DATA_ONLY)
+    elif value == 6:
+        webdriver.Remote.set_network_connection(ConnectionType.ALL_NETWORK_ON)
+
+
+def get_network_connection():
+    """ 获取网络连接状态"""
+    return webdriver.Remote.network_connection
+
+
 if __name__ == "__main__":
-    pass
+    get_network_connection()

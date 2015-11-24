@@ -10,3 +10,4 @@ from Automan import sendreport
 from Automan import CreatePage
 from Automan import CreatePageFromDB
 from Automan import DBUtil
+from Automan import AppiumServer

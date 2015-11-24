@@ -58,8 +58,7 @@ def sendmail(file_new):
         att3["Content-Disposition"] = 'attachment; filename="YOHO_autotest_result.xls"'
         msgRoot.attach(att3)
 
-        failnum = str(env.CaseFail)
-        print(failnum)
+        failnum = env.CaseFail
         if failnum >= 1:
             msgRoot['Subject'] = u"[%s Fail] YOHO %s Automated Test Report ( %s )" % (failnum, source, env.ExecuterDate)
         else:

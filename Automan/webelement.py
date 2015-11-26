@@ -5,6 +5,7 @@ from selenium import webdriver
 from selenium.webdriver.common.keys import Keys
 from selenium.common.exceptions import NoSuchElementException, NoAlertPresentException
 from selenium.webdriver.common.touch_actions import TouchActions
+from selenium.webdriver.support.ui import WebDriverWait
 import time
 import env
 import log
@@ -308,7 +309,9 @@ class WebElement:
     def Click(cls):
         log.step_normal("Element [%s]: Do Click()" % cls.__name__)
 
-        cls.__wait()
+        # cls.__wait()
+        WebDriverWait(env.driver, 10).until(lambda the_driver:
+                                            the_driver.find_element(cls.by, cls.value).is_displayed())
         elements = env.driver.find_element(cls.by, cls.value)
         elements.click()
         time.sleep(3)
@@ -355,6 +358,12 @@ class WebElement:
 
         time.sleep(3)
         cls.__clearup()
+
+    @classmethod
+    def scroll_to_and_click(cls):
+        element = env.driver.find_elements(cls.by, cls.value)
+        env.driver.execute_script('window.scrollTo(0, ' + str(element.location['y']) + ');')
+        element.click()
 
     # ClickList，获取元素列表，然后从列表中,随机点击一个
     @classmethod
@@ -927,14 +936,14 @@ class WebElement:
 
     # APP列表中进行tap点击
     @classmethod
-    def Tap_App(cls, x, y):
+    def Tap_App(cls):
         log.step_normal("Element [%s]: Do Tap_App()" % cls.__name__)
 
         cls.__wait()
         element = env.driver.find_elements(cls.by, cls.value)
 
         actions = TouchActions(env.driver)
-        actions.tap(element, x, y)
+        actions.tap(element)
         actions.perform()
 
         time.sleep(3)

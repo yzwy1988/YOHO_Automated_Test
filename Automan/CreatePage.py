@@ -13,9 +13,9 @@ def Create_Page():
 
     Testing_Browsers_or_Devices = common.get_value_from_conf_path("TESTING_BROWSERS_OR_DEVICES", currentPath)
 
-    if Testing_Browsers_or_Devices == "Android" or Testing_Browsers_or_Devices == "IOS":
+    if Testing_Browsers_or_Devices == "APP-Android" or Testing_Browsers_or_Devices == "APP-IOS":
         data = xlrd.open_workbook(u"%s\\Data\\PageObjectsData_app.xlsx" % currentPath)
-    elif Testing_Browsers_or_Devices == "H5-Android" or Testing_Browsers_or_Devices == "H5-iOS":
+    elif Testing_Browsers_or_Devices == "H5-Android" or Testing_Browsers_or_Devices == "H5-IOS":
         data = xlrd.open_workbook(u"%s\\Data\\PageObjectsData_h5.xlsx" % currentPath)
     else:
         data = xlrd.open_workbook(u"%s\\Data\\PageObjectsData_web.xlsx" % currentPath)

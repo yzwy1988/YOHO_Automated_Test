@@ -30,7 +30,7 @@ def create_page_from_db():
         source_id = 22
     elif source_name == "APP-IOS":
         source_id = 23
-    elif source_name == "H5-Android" or source_name == "H5-iOS":
+    elif source_name == "H5-Android" or source_name == "H5-IOS":
         source_id = 24
 
     # 清空Page文件夹

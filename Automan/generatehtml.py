@@ -38,8 +38,8 @@ def generatehtml():
         source = "APP-IOS"
     elif Running_Browser_Devices == "H5-Android":
         source = "H5-Android"
-    elif Running_Browser_Devices == "H5-iOS":
-        source = "H5-iOS"
+    elif Running_Browser_Devices == "H5-IOS":
+        source = "H5-IOS"
 
     precent = round(float(env.CaseSuccess)/(env.CaseSuccess + env.CaseFail), 4)*100
 

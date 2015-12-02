@@ -109,7 +109,7 @@ def launch_device():
 
         env.platformName = platformName
 
-    elif env.TESTING_BROWSERS == 'APP-iOS':
+    elif env.TESTING_BROWSERS == 'APP-IOS':
         PATH = lambda p: os.path.abspath(os.path.join(os.path.dirname(__file__), p))
         desired_caps = {}
         platformName = PublicImp.common.get_value_from_conf("TESTING_BROWSERS_OR_DEVICES")
@@ -146,7 +146,7 @@ def launch_device():
 
         env.platformName = platformName
 
-    elif env.TESTING_BROWSERS == 'H5-iOS':
+    elif env.TESTING_BROWSERS == 'H5-IOS':
         desired_caps = {}
         platformName = PublicImp.common.get_value_from_conf("TESTING_BROWSERS_OR_DEVICES")
         platformVersion = PublicImp.common.get_value_from_conf("platformVersion")
@@ -163,7 +163,7 @@ def launch_device():
 
     env.driver = webdriver.Remote('http://%s:%s/wd/hub' % (appium_server_ip, appium_server_port), desired_caps)
 
-    if env.TESTING_BROWSERS == 'H5-Android' or env.TESTING_BROWSERS == 'H5-iOS':
+    if env.TESTING_BROWSERS == 'H5-Android' or env.TESTING_BROWSERS == 'H5-IOS':
         env.driver.get("http://m.yohobuy.com")
         env.driver.implicitly_wait(10)
 
@@ -207,7 +207,7 @@ def run_module(dirname, module_name):
 
     for testcase in testcases:
 
-        if "APP-Android" in env.TESTING_BROWSERS or "APP-IOS" in env.TESTING_BROWSERS or "H5-Android" in env.TESTING_BROWSERS or "H5-iOS" in env.TESTING_BROWSERS:
+        if "APP-Android" in env.TESTING_BROWSERS or "APP-IOS" in env.TESTING_BROWSERS or "H5-Android" in env.TESTING_BROWSERS or "H5-IOS" in env.TESTING_BROWSERS:
             rerun_number = PublicImp.common.get_value_from_conf("rerun_num")
 
             k = 0

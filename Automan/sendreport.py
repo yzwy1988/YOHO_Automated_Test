@@ -29,8 +29,8 @@ def sendmail(file_new):
         source = "APP-IOS"
     elif Running_Browser_Devices == "H5-Android":
         source = "H5-Android"
-    elif Running_Browser_Devices == "H5-iOS":
-        source = "H5-iOS"
+    elif Running_Browser_Devices == "H5-IOS":
+        source = "H5-IOS"
 
     for mail_to in mailto.split('|'):
         f = open(file_new, 'rb')

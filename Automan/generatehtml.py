@@ -96,7 +96,7 @@ def generatehtml():
 
         xls = datadriver.ExcelSheet("TeseCaseDescription.xlsx", "TeseCaseDescription")
         for j in range(1, xls.nrows()):
-            log.step_section("Execute TeseCaseDescription Excel Date: Line [%s]" % j)
+            # log.step_section("Execute TeseCaseDescription Excel Date: Line [%s]" % j)
             tescaseName = xls.cell(j, "TeseCaseName")
             tesecasedescription = xls.cell(j, "TeseCaseDescription")
             if sheetname == tescaseName:

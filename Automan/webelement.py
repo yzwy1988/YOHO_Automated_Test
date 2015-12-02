@@ -351,7 +351,9 @@ class WebElement:
     def ClickList_App(cls):
         log.step_normal("Element [%s]: Do ClickList_App()" % cls.__name__)
 
-        cls.__wait()
+        # cls.__wait()
+        WebDriverWait(env.driver, 10).until(lambda the_driver:
+                                            the_driver.find_element(cls.by, cls.value).is_displayed())
         elements = env.driver.find_elements(cls.by, cls.value)
         rd = random.randint(0, len(elements)-1)
         elements[rd].click()
@@ -630,6 +632,8 @@ class WebElement:
         log.step_normal("Element [%s]: IsExist?" % cls.__name__)
 
         # cls.__wait()
+        WebDriverWait(env.driver, 10).until(lambda the_driver:
+                                            the_driver.find_element(cls.by, cls.value).is_displayed())
         elements = env.driver.find_elements(cls.by, cls.value)
         log.step_normal("Element [%s]: IsExist? Count = [%s]" % (cls.__name__, len(elements)))
         
@@ -817,11 +821,11 @@ class WebElement:
             t += 1
             
             try:
-                print(u"Element: %s " % cls.value)
+                # print(u"Element: %s " % cls.value)
                 elements = env.driver.find_elements(cls.by, cls.value)
                 # print("__wait_elements= %s " % elements)
-                print("There are [%s] Elements" % len(elements))
-                print("------------------------------------------------------------")
+                # print("There are [%s] Elements" % len(elements))
+                # print("------------------------------------------------------------")
             except NoSuchElementException:
                 log.step_normal("Element [%s]: NoSuchElementException." % cls.__name__)
                 elements = []

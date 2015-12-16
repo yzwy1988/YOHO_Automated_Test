@@ -301,7 +301,7 @@ class WebElement:
         element = env.driver.find_element(cls.by, cls.value)
 
         action = webdriver.ActionChains(env.driver)
-        action.move_to_element(element).click()
+        action.move_to_element(element)
         action.perform()
         time.sleep(3)
 
@@ -319,6 +319,20 @@ class WebElement:
         if env.RUNNING_BROWSER in ("Chrome", "Firefox", "IE", "Safari"):
             env.driver.switch_to_window(env.driver.window_handles[-1])
             # env.driver.maximize_window()
+
+        cls.__clearup()
+
+    @classmethod
+    def Right_Click(cls):
+        log.step_normal("Element [%s]: Do Right_Click()" % cls.__name__)
+
+        # cls.__wait()
+        WebDriverWait(env.driver, 10).until(lambda the_driver:
+                                            the_driver.find_element(cls.by, cls.value).is_displayed())
+        elements = env.driver.find_element(cls.by, cls.value)
+        action = webdriver.ActionChains(env.driver)
+        action.context_click(elements).perform()
+        time.sleep(3)
 
         cls.__clearup()
 
@@ -547,7 +561,7 @@ class WebElement:
     def GetObjectsCount(cls):
         log.step_normal("Element [%s]: GetObjectsCount." % cls.__name__)
         
-        cls.__wait_for_appearing()
+        # cls.__wait_for_appearing()
         
         elements = env.driver.find_elements(cls.by, cls.value)
         log.step_normal("Element [%s]: GetObjectsCount = [%s]" % (cls.__name__, len(elements)))
@@ -632,12 +646,12 @@ class WebElement:
         log.step_normal("Element [%s]: IsExist?" % cls.__name__)
 
         # cls.__wait()
-        WebDriverWait(env.driver, 10).until(lambda the_driver:
-                                            the_driver.find_element(cls.by, cls.value).is_displayed())
+        # WebDriverWait(env.driver, 10).until(lambda the_driver:
+        # the_driver.find_element(cls.by, cls.value).is_displayed())
         elements = env.driver.find_elements(cls.by, cls.value)
         log.step_normal("Element [%s]: IsExist? Count = [%s]" % (cls.__name__, len(elements)))
         
-        cls.__clearup()
+        # cls.__clearup()
         
         if len(elements) > 0:
             return True
@@ -821,11 +835,11 @@ class WebElement:
             t += 1
             
             try:
-                # print(u"Element: %s " % cls.value)
+                print(u"Element: %s " % cls.value)
                 elements = env.driver.find_elements(cls.by, cls.value)
                 # print("__wait_elements= %s " % elements)
-                # print("There are [%s] Elements" % len(elements))
-                # print("------------------------------------------------------------")
+                print("There are [%s] Elements" % len(elements))
+                print("------------------------------------------------------------")
             except NoSuchElementException:
                 log.step_normal("Element [%s]: NoSuchElementException." % cls.__name__)
                 elements = []

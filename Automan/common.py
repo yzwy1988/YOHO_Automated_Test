@@ -191,7 +191,10 @@ def set_network_connection(value):
 
 
 def get_network_connection():
-    """ 获取网络连接状态"""
+    """ 获取网络连接状态 get network
+        self.driver.network_connection # it would return int type, like 0, 1, 2, 4, 6
+        ConnectionType(self.driver.network_connection).name # it would return mode name, like AIRPLANE_MODE, WIFI_ONLY
+    """
     return webdriver.Remote.network_connection
 
 

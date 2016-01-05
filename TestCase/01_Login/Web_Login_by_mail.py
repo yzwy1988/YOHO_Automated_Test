@@ -5,7 +5,7 @@ from Page import PageImp
 import time
 
 """
-  测试用例描述：调用公共用例进行登录、退出
+  测试用例描述：调用公共用例进行登录、退出--By Mail
 """
 
 

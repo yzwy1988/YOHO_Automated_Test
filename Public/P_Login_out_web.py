@@ -19,7 +19,7 @@ class Login_and_out:
 
         PageImp.Page_Home.Page_Home.Login.Click()
         sleep(3)
-        if(account is not None and password is not None):
+        if account is not None and password is not None:
             PageImp.Page_Login.Page_Login.UserName.Set(account)
             PageImp.Page_Login.Page_Login.PassWord.Set(password)
         else:

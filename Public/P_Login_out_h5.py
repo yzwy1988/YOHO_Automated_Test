@@ -11,6 +11,7 @@ class Login_And_out():
     @classmethod
     def login(cls, account=None, password=None):
 
+        """
         if PageImp.Page_HomeGuide.Page_HomeGuide.GoBoys.IsExist():
             PageImp.Page_HomeGuide.Page_HomeGuide.GoBoys.Click()
 
@@ -22,10 +23,12 @@ class Login_And_out():
         # if PageImp.Page_Login.Page_Login.Login_del_image.IsExist():
             # PageImp.Page_Login.Page_Login.Login_del_image.Click()
             # sleep(2)
+        """
+        if PageImp.Page_PersonalCenter.Page_PersonalCenter.loginAndRegisterBtn.IsExist():
+            PageImp.Page_PersonalCenter.Page_PersonalCenter.loginAndRegisterBtn.Click()
 
         if account is not None and password is not None:
             PageImp.Page_Login.Page_Login.UserName.Set(account)
-            sleep(2)
             PageImp.Page_Login.Page_Login.PassWord.Set(password)
         else:
             xls = PublicImp.datadriver.ExcelSheet("LoginUserData_h5.xlsx", "LoginAccount")
@@ -34,17 +37,21 @@ class Login_And_out():
                 exc_account = xls.cell(i, "UserName")
                 exc_password = xls.cell(i, "Password")
                 PageImp.Page_Login.Page_Login.UserName.Set(exc_account)
-                sleep(2)
                 PageImp.Page_Login.Page_Login.PassWord.Set(exc_password)
-                sleep(2)
 
         # PageImp.Page_Login.Page_Login.Login_loginbtn.Click()
 
-        # 点击屏幕坐标点,点击1次
-        PublicImp.env.driver.execute_script("mobile: tap", {"touchCount": "1", "x": 355, "y": 634})
-        sleep(20)
+        # 点击屏幕坐标点,点击1次: 红米手机
+        # PublicImp.env.driver.execute_script("mobile: tap", {"touchCount": "1", "x": 355, "y": 634})
+        # 点击屏幕坐标点,点击1次: Mate7
+        # PublicImp.env.driver.execute_script("mobile: tap", {"touchCount": "1", "x": 513, "y": 916})
+        # ZTE U5S
+        PublicImp.env.driver.execute_script("mobile: tap", {"touchCount": "1", "x": 333, "y": 633})
+
+        sleep(3)
 
     @classmethod
     def logout(cls):
+        PageImp.Page_PersonalCenter.Page_PersonalCenter.GoToUserInfo.Click()
         PageImp.Page_PersonalCenter.Page_PersonalCenter.LogOut.Click()
         sleep(2)

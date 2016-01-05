@@ -11,7 +11,7 @@ sys.setdefaultencoding('utf-8')
 class Login_and_out:
 
     @classmethod
-    def Login(cls, account=None, password=None):
+    def Login(cls, account=None, password=None, link_name=None):
 
         if PageImp.Page_HomeGuide.Page_HomeGuide.Close.IsExist():
             PageImp.Page_HomeGuide.Page_HomeGuide.Close.Click()

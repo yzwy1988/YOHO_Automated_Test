@@ -11,6 +11,6 @@ import time
 
 def web_login_by_mail():
 
-    P_Login_out_web.Login_and_out.Login("15950554416", "123456")
+    P_Login_out_web.Login_and_out.Login("15950554416", "123456", u"李旭")
     P_Login_out_web.Login_and_out.Logout()
 

@@ -1,11 +1,11 @@
 # -*- coding: utf-8 -*-
 
-import sys
-reload(sys)
-sys.setdefaultencoding('utf-8')
 from Page import PageImp
 from Automan import PublicImp
 from time import sleep
+import sys
+reload(sys)
+sys.setdefaultencoding('utf-8')
 
 
 class Login_and_out:
@@ -28,12 +28,15 @@ class Login_and_out:
                 PublicImp.log.step_section("Execute Excel Date: Line [%s]" % i)
                 exc_account = xls.cell(i, "UserName")
                 exc_password = xls.cell(i, "Password")
+                link_name = xls.cell(i, "LinkName")
                 PageImp.Page_Login.Page_Login.UserName.Set(exc_account)
                 PageImp.Page_Login.Page_Login.UserName.Click()
                 PageImp.Page_Login.Page_Login.PassWord.Set(exc_password)
                 sleep(3)
         PageImp.Page_Login.Page_Login.SubmitButton.Click()
         sleep(3)
+        PageImp.Page_Home.Page_Home.LinkName.VerifyInnerHTMLContains(link_name)
+
 
     @classmethod
     def Logout(cls):

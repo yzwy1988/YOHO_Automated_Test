@@ -165,7 +165,9 @@ class WebElement:
         
         log.step_normal(u"Element [%s]: Set Value [%s]." % (cls.__name__, value))
         
-        cls.__wait()
+        # cls.__wait()
+        WebDriverWait(env.driver, 10).until(lambda the_driver:
+                                            the_driver.find_element(cls.by, cls.value).is_displayed())
         elements = env.driver.find_elements(cls.by, cls.value)
 
         if elements[cls.index].tag_name == "select" or elements[cls.index].tag_name == "ul":

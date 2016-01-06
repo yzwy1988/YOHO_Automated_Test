@@ -66,6 +66,9 @@ def testcase_placeorder_1():
     PageImp.Page_SearchResultList.Page_SearchResultList.ResultList.ClickList()
     sleep(5)
 
+    PublicImp.webelement.WebBrowser.Refresh()
+    sleep(5)
+
     # 判断商品详情页面中的商品名称与商品价格与之前商品列表中选择的商品名称及价格信息是否一致
     # PageImp.Page_GoodsDetails.Page_GoodsDetails.Goods_Name.VerifyInnerHTMLContains(goodname)
     # PageImp.Page_GoodsDetails.Page_GoodsDetails.Goods_Price.VerifyInnerHTMLContains(goodprice)

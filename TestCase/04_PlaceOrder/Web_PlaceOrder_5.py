@@ -46,6 +46,9 @@ def testcase_placeorder_5():
     PageImp.Page_SearchResultList.Page_SearchResultList.ResultList.ClickList()
     sleep(5)
 
+    PublicImp.webelement.WebBrowser.Refresh()
+    sleep(5)
+
     # 商品详情页面,选择颜色（未售罄）
     if PageImp.Page_GoodsDetails.Page_GoodsDetails.ChooseColor.GetObjectsCount() > 1:
         PageImp.Page_GoodsDetails.Page_GoodsDetails.ChooseColor.ClickList()
@@ -66,6 +69,9 @@ def testcase_placeorder_5():
 
     # 点击 去购物车结算 按钮,进入购物车列表页面
     PageImp.Page_GoodsDetails.Page_GoodsDetails.GotoCartButton.Click()
+    sleep(5)
+
+    PublicImp.webelement.WebBrowser.Refresh()
     sleep(5)
 
     # 购物车页面--列表--选择商品点击移入收藏夹

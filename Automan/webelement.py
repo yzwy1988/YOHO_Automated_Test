@@ -190,7 +190,9 @@ class WebElement:
         
         log.step_normal("Element [%s]: Do Select [%s]." % (cls.__name__, value))
         
-        cls.__wait()
+        # cls.__wait()
+        WebDriverWait(env.driver, 10).until(lambda the_driver:
+                                            the_driver.find_element(cls.by, cls.value).is_displayed())
         elements = env.driver.find_elements(cls.by, cls.value)
 
         # select
@@ -228,7 +230,9 @@ class WebElement:
         
         order = int(order)
 
-        cls.__wait()
+        # cls.__wait()
+        WebDriverWait(env.driver, 10).until(lambda the_driver:
+                                            the_driver.find_element(cls.by, cls.value).is_displayed())
         elements = env.driver.find_elements(cls.by, cls.value)
         
         # ul
@@ -299,7 +303,9 @@ class WebElement:
     def movetoelement(cls):
         log.step_normal("Element [%s]: Do movetoelement()" % cls.__name__)
         
-        cls.__wait()
+        # cls.__wait()
+        WebDriverWait(env.driver, 10).until(lambda the_driver:
+                                            the_driver.find_element(cls.by, cls.value).is_displayed())
         element = env.driver.find_element(cls.by, cls.value)
 
         action = webdriver.ActionChains(env.driver)
@@ -342,7 +348,9 @@ class WebElement:
     def Click_No_Switch(cls):
         log.step_normal("Element [%s]: Do Click_No_Switch()" % cls.__name__)
 
-        cls.__wait()
+        # cls.__wait()
+        WebDriverWait(env.driver, 10).until(lambda the_driver:
+                                            the_driver.find_element(cls.by, cls.value).is_displayed())
         elements = env.driver.find_element(cls.by, cls.value)
         elements.click()
         time.sleep(3)
@@ -353,7 +361,9 @@ class WebElement:
     def Click_key_down_up(cls):
         log.step_normal("Element [%s]: Do Click_key_down_up()" % cls.__name__)
 
-        cls.__wait()
+        # cls.__wait()
+        WebDriverWait(env.driver, 10).until(lambda the_driver:
+                                            the_driver.find_element(cls.by, cls.value).is_displayed())
         elements = env.driver.find_element(cls.by, cls.value)
 
         action = webdriver.ActionChains(env.driver)
@@ -395,7 +405,9 @@ class WebElement:
             js2 = "var q = document.documentElement.scrollTop=100000"
             env.driver.execute_script(js2)
 
-        cls.__wait()
+        # cls.__wait()
+        WebDriverWait(env.driver, 10).until(lambda the_driver:
+                                            the_driver.find_element(cls.by, cls.value).is_displayed())
 
         i = 0
         while i < 1:
@@ -426,7 +438,9 @@ class WebElement:
         """
         log.step_normal("Element [%s]: Do EnhancedClick()" % cls.__name__)
         
-        cls.__wait()
+        # cls.__wait()
+        WebDriverWait(env.driver, 10).until(lambda the_driver:
+                                            the_driver.find_element(cls.by, cls.value).is_displayed())
         
         i = 0
         while i < 3:
@@ -471,7 +485,9 @@ class WebElement:
     def DoubleClick(cls):
         log.step_normal("Element [%s]: Do DoubleClick()" % cls.__name__)
         
-        cls.__wait()
+        # cls.__wait()
+        WebDriverWait(env.driver, 10).until(lambda the_driver:
+                                            the_driver.find_element(cls.by, cls.value).is_displayed())
         elements = env.driver.find_elements(cls.by, cls.value)
         
         action = webdriver.ActionChains(env.driver)
@@ -489,7 +505,9 @@ class WebElement:
     def ClickAndHold(cls):
         log.step_normal("Element [%s]: Do ClickAndHold()" % cls.__name__)
         
-        cls.__wait()
+        # cls.__wait()
+        WebDriverWait(env.driver, 10).until(lambda the_driver:
+                                            the_driver.find_element(cls.by, cls.value).is_displayed())
         elements = env.driver.find_elements(cls.by, cls.value)
 
         action = webdriver.ActionChains(env.driver)
@@ -503,7 +521,9 @@ class WebElement:
     def ReleaseClick(cls):
         log.step_normal("Element [%s]: Do ReleaseClick()" % cls.__name__)
         
-        cls.__wait()
+        # cls.__wait()
+        WebDriverWait(env.driver, 10).until(lambda the_driver:
+                                            the_driver.find_element(cls.by, cls.value).is_displayed())
         elements = env.driver.find_elements(cls.by, cls.value)
         
         action = webdriver.ActionChains(env.driver)
@@ -522,7 +542,9 @@ class WebElement:
         
         log.step_normal(u"Element [%s]: TypeIn Value [%s]." % (cls.__name__, value))
         
-        cls.__wait()
+        # cls.__wait()
+        WebDriverWait(env.driver, 10).until(lambda the_driver:
+                                            the_driver.find_element(cls.by, cls.value).is_displayed())
         elements = env.driver.find_elements(cls.by, cls.value)
         
         action = webdriver.ActionChains(env.driver)
@@ -535,7 +557,9 @@ class WebElement:
     def SendEnter(cls):
         log.step_normal(u"Element [%s]: SendEnter()" % (cls.__name__, ))
         
-        cls.__wait()
+        # cls.__wait()
+        WebDriverWait(env.driver, 10).until(lambda the_driver:
+                                            the_driver.find_element(cls.by, cls.value).is_displayed())
         elements = env.driver.find_elements(cls.by, cls.value)
         
         action = webdriver.ActionChains(env.driver)
@@ -548,7 +572,9 @@ class WebElement:
     def GetFocus(cls):
         log.step_normal(u"Element [%s]: GetFocus()" % (cls.__name__, ))
         
-        cls.__wait()
+        # cls.__wait()
+        WebDriverWait(env.driver, 10).until(lambda the_driver:
+                                            the_driver.find_element(cls.by, cls.value).is_displayed())
         elements = env.driver.find_elements(cls.by, cls.value)
         
         elements[cls.index].send_keys(Keys.NULL)
@@ -576,7 +602,9 @@ class WebElement:
     def GetInnerHTML(cls):
         log.step_normal(u"Element [%s]: GetInnerHTML." % (cls.__name__, ))
         
-        cls.__wait()
+        # cls.__wait()
+        WebDriverWait(env.driver, 10).until(lambda the_driver:
+                                            the_driver.find_element(cls.by, cls.value).is_displayed())
         elements = env.driver.find_elements(cls.by, cls.value)
         log.step_normal(u"Element [%s]: InnerHTML = [%s]" % (cls.__name__, elements[cls.index].get_attribute('innerHTML')))
         
@@ -587,7 +615,9 @@ class WebElement:
     def GetAttribute(cls, attr):
         log.step_normal(u"Element [%s]: Get Attribute [%s]." % (cls.__name__, attr))
         
-        cls.__wait()
+        # cls.__wait()
+        WebDriverWait(env.driver, 10).until(lambda the_driver:
+                                            the_driver.find_element(cls.by, cls.value).is_displayed())
         elements = env.driver.find_elements(cls.by, cls.value)
         attr_value = elements[cls.index].get_attribute(attr)
         log.step_normal(u"Element [%s]: Attribute Value = [%s]." % (cls.__name__, attr_value))
@@ -613,7 +643,9 @@ class WebElement:
     def WaitForVisible(cls):
         log.step_normal("Element [%s]: WaitForVisible." % cls.__name__)
         
-        cls.__wait()
+        # cls.__wait()
+        WebDriverWait(env.driver, 10).until(lambda the_driver:
+                                            the_driver.find_element(cls.by, cls.value).is_displayed())
         elements = env.driver.find_elements(cls.by, cls.value)
         
         t = 0
@@ -631,7 +663,9 @@ class WebElement:
     def IsEnabled(cls):
         log.step_normal(u"Element [%s]: Is Enabled?" % cls.__name__)
         
-        cls.__wait()
+        # cls.__wait()
+        WebDriverWait(env.driver, 10).until(lambda the_driver:
+                                            the_driver.find_element(cls.by, cls.value).is_displayed())
         elements = env.driver.find_elements(cls.by, cls.value)
         
         if elements[cls.index].is_enabled():
@@ -664,7 +698,9 @@ class WebElement:
     def IsVisible(cls):
         log.step_normal("Element [%s]: IsVisible?" % cls.__name__)
         
-        cls.__wait()
+        # cls.__wait()
+        WebDriverWait(env.driver, 10).until(lambda the_driver:
+                                            the_driver.find_element(cls.by, cls.value).is_displayed())
         elements = env.driver.find_elements(cls.by, cls.value)
         
         if elements[cls.index].is_displayed():
@@ -703,7 +739,9 @@ class WebElement:
     def VerifyEnabled(cls, trueOrfalse):
         log.step_normal(u"Element [%s]: Verify Enabled = [%s]" % (cls.__name__, trueOrfalse))
         
-        cls.__wait()
+        # cls.__wait()
+        WebDriverWait(env.driver, 10).until(lambda the_driver:
+                                            the_driver.find_element(cls.by, cls.value).is_displayed())
         elements = env.driver.find_elements(cls.by, cls.value)
         
         if elements[cls.index].is_enabled():
@@ -726,7 +764,9 @@ class WebElement:
         
         log.step_normal("Element [%s]: VerifyInnerHTMLContains [%s]." % (cls.__name__, contain_content))
         
-        cls.__wait()
+        # cls.__wait()
+        WebDriverWait(env.driver, 10).until(lambda the_driver:
+                                            the_driver.find_element(cls.by, cls.value).is_displayed())
         elements = env.driver.find_elements(cls.by, cls.value)
         inner_html = elements[cls.index].get_attribute('innerHTML')
 
@@ -744,7 +784,9 @@ class WebElement:
 
         log.step_normal("Element [%s]: VerifyInnerHTMLContains [%s]." % (cls.__name__, contain_content))
 
-        cls.__wait()
+        # cls.__wait()
+        WebDriverWait(env.driver, 10).until(lambda the_driver:
+                                            the_driver.find_element(cls.by, cls.value).is_displayed())
         elements = env.driver.find_elements(cls.by, cls.value)
         rd = random.randint(0, len(elements)-1)
         inner_html = elements[rd].get_attribute('innerHTML')
@@ -763,7 +805,9 @@ class WebElement:
 
         log.step_normal("Element [%s]: VerifyInnerHTMLNotContains [%s]." % (cls.__name__, contain_content))
 
-        cls.__wait()
+        # cls.__wait()
+        WebDriverWait(env.driver, 10).until(lambda the_driver:
+                                            the_driver.find_element(cls.by, cls.value).is_displayed())
         elements = env.driver.find_elements(cls.by, cls.value)
         inner_html = elements[cls.index].get_attribute('innerHTML')
 
@@ -781,7 +825,9 @@ class WebElement:
 
         log.step_normal("Element [%s]: VerifyContentIsIncluded [%s]." % (cls.__name__, contain_content))
 
-        cls.__wait()
+        # cls.__wait()
+        WebDriverWait(env.driver, 10).until(lambda the_driver:
+                                            the_driver.find_element(cls.by, cls.value).is_displayed())
         elements = env.driver.find_elements(cls.by, cls.value)
         inner_html = elements[cls.index].get_attribute('innerHTML')
 
@@ -799,7 +845,9 @@ class WebElement:
         
         log.step_normal("Element [%s]: Verify Attribute [%s] == [%s]." % (cls.__name__, attr, contain_content))
         
-        cls.__wait()
+        # cls.__wait()
+        WebDriverWait(env.driver, 10).until(lambda the_driver:
+                                            the_driver.find_element(cls.by, cls.value).is_displayed())
         elements = env.driver.find_elements(cls.by, cls.value)
         attr_value = elements[cls.index].get_attribute(attr)
         
@@ -817,7 +865,9 @@ class WebElement:
         
         log.step_normal("Element [%s]: Verify [%s] Contains [%s]." % (cls.__name__, attr, contain_content))
         
-        cls.__wait()
+        # cls.__wait()
+        WebDriverWait(env.driver, 10).until(lambda the_driver:
+                                            the_driver.find_element(cls.by, cls.value).is_displayed())
         elements = env.driver.find_elements(cls.by, cls.value)
         attr_value = elements[cls.index].get_attribute(attr)
         
@@ -932,7 +982,9 @@ class WebElement:
         发送触摸手势给设备 flick(轻触)
         引导页滑动
         """
-        cls.__wait()
+        # cls.__wait()
+        WebDriverWait(env.driver, 10).until(lambda the_driver:
+                                            the_driver.find_element(cls.by, cls.value).is_displayed())
 
         pages = env.driver.find_element_by_id(element_id)
         touch_actions = TouchActions(env.driver)
@@ -943,7 +995,9 @@ class WebElement:
     def LongClickList_App(cls):
         log.step_normal("Element [%s]: Do LongClickList_App()" % cls.__name__)
 
-        cls.__wait()
+        # cls.__wait()
+        WebDriverWait(env.driver, 10).until(lambda the_driver:
+                                            the_driver.find_element(cls.by, cls.value).is_displayed())
         elements = env.driver.find_elements(cls.by, cls.value)
         rd = random.randint(0, len(elements)-1)
 
@@ -959,7 +1013,9 @@ class WebElement:
     def Tap_App(cls):
         log.step_normal("Element [%s]: Do Tap_App()" % cls.__name__)
 
-        cls.__wait()
+        # cls.__wait()
+        WebDriverWait(env.driver, 10).until(lambda the_driver:
+                                            the_driver.find_element(cls.by, cls.value).is_displayed())
         element = env.driver.find_elements(cls.by, cls.value)
 
         actions = TouchActions(env.driver)

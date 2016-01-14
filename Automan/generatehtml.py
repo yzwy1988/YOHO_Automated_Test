@@ -94,11 +94,22 @@ def generatehtml():
             H5_Android_status = excelvalue[7]
             H5_IOS_status = excelvalue[8]
 
+        """
         xls = datadriver.ExcelSheet("TeseCaseDescription.xlsx", "TeseCaseDescription")
         for j in range(1, xls.nrows()):
             # log.step_section("Execute TeseCaseDescription Excel Date: Line [%s]" % j)
             tescaseName = xls.cell(j, "TeseCaseName")
             tesecasedescription = xls.cell(j, "TeseCaseDescription")
+            if sheetname == tescaseName:
+                break
+        """
+
+        sql_list = "select testcasename, testcasedescription from yoho_testcasedescription order by id asc"
+        db.query(sql_list)
+        sql_list_result = db.fetchAllRows()
+        for result in sql_list_result:
+            tescaseName = result[0]
+            tesecasedescription = result[1]
             if sheetname == tescaseName:
                 break
 

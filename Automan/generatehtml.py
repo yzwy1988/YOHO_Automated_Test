@@ -104,7 +104,8 @@ def generatehtml():
                 break
         """
 
-        sql_list = "select testcasename, testcasedescription from yoho_testcasedescription order by id asc"
+        sql_list = "select testcasename, testcasedescription from yoho_testcasedescription " \
+                   "where state='A' order by id asc"
         db.query(sql_list)
         sql_list_result = db.fetchAllRows()
         for result in sql_list_result:

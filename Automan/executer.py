@@ -79,6 +79,7 @@ def launch_browser():
 
 def launch_device():
 
+    """
     xls = PublicImp.datadriver.ExcelSheet("TeseCaseDescription.xlsx", "TeseCaseDescription")
     for j in range(1, xls.nrows()):
         tescaseName = xls.cell(j, "TeseCaseName")
@@ -87,6 +88,36 @@ def launch_device():
             appium_server_port = xls.cell(j, "appium_server_port")
             udid = xls.cell(j, "udid")
             platformVersion = xls.cell(j, "AndroidVersion")
+    """
+
+    hostfromconf = PublicImp.common.get_value_from_conf("host")
+    portfromconf = PublicImp.common.get_value_from_conf("port")
+    userfromconf = PublicImp.common.get_value_from_conf("user")
+    passwdfromconf = PublicImp.common.get_value_from_conf("passwd")
+    dbfromconf = PublicImp.common.get_value_from_conf("db")
+    charsetfromconf = PublicImp.common.get_value_from_conf("charset")
+
+    dbconfig = {'host': hostfromconf,
+                'port': int(portfromconf),
+                'user': userfromconf,
+                'passwd': passwdfromconf,
+                'db': dbfromconf,
+                'charset': charsetfromconf}
+
+    db = PublicImp.DBUtil.MySQL(dbconfig)
+
+    sql = "select testcasename, appium_server_ip, appium_server_port, udid, " \
+          "deviceversion from yoho_testcasedescription where state='A' order by id asc"
+
+    db.query(sql)
+    sql_result = db.fetchAllRows()
+    for result in sql_result:
+        tescaseName = result[0]
+        if tescaseName == env.MODULE_NAME:
+            appium_server_ip = result[1]
+            appium_server_port = result[2]
+            udid = result[3]
+            platformVersion = result[4]
 
     if env.TESTING_BROWSERS == 'APP-Android':
         desired_caps = {}

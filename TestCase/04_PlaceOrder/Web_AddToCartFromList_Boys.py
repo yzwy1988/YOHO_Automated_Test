@@ -44,6 +44,14 @@ def testcase_Web_AddToCartFromList_Boys():
     PageImp.Page_GoodsDetails.Page_GoodsDetails.GotoCartButton.Click()
     sleep(5)
 
+    # 购物车-选择赠品
+    if PageImp.Page_ShopCart.Page_ShopCart.Mark_Zeng.IsExist():
+        PageImp.Page_ShopCart.Page_ShopCart.Select_Mark_Zeng.Click()
+        PageImp.Page_ShopCart.Page_ShopCart.Mark_Zeng_Select_Color.ClickList()
+        PageImp.Page_ShopCart.Page_ShopCart.Mark_Zeng_Select_Size.ClickList()
+        PageImp.Page_ShopCart.Page_ShopCart.Mark_Zeng_AddToCart.Click()
+        sleep(5)
+
     # 购物车列表页面点击去结算按钮
     PageImp.Page_ShopCart.Page_ShopCart.ToSettleAccounts.Click()
     sleep(5)

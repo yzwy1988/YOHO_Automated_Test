@@ -6,7 +6,7 @@ from Automan import PublicImp
 from time import sleep
 
 """
-   测试用例描述：从SALE专区页添加商品到购物车;
+   测试用例描述：从SALE页添加商品到购物车;
 """
 
 

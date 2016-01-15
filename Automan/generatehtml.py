@@ -48,10 +48,10 @@ def generatehtml():
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
     <table border="1" style="width: 100%;text-align: center;" cellspacing="0" cellpadding="0">
         <tr>
-            <td colspan="11"><font face="微软雅黑" size="4" ><strong>YOHO """ + source + """ Automated Test Report</strong></font></td>
+            <td colspan="10"><font face="微软雅黑" size="4" ><strong>YOHO """ + source + """ Automated Test Report</strong></font></td>
         </tr>
         <tr align="left">
-            <td colspan="11"><font color="blue">→Executer_Date： """ + env.ExecuterDate + """</font> <br>
+            <td colspan="10"><font color="blue">→Executer_Date： """ + env.ExecuterDate + """</font> <br>
                              <font color="blue">→Executer_Time： """ + env.CalTime + """</font> <br>
                              <font color="blue">→Running_Browser_Devices： """ + Running_Browser_Devices + """</font> <br>
                              <font color="blue">→Executer_Case_Total： """ + str(env.CaseSuccess + env.CaseFail) + """</font> <br>
@@ -61,7 +61,7 @@ def generatehtml():
             </td>
         </tr>
         <tr>
-            <td bgColor=#C0C0C0 colspan="3" >Test_Case_Name</td>
+            <td bgColor=#C0C0C0 colspan="2" >Test_Case_Name</td>
             <td bgColor=#C0C0C0 >IE</td>
             <td bgColor=#C0C0C0 >Firefox</td>
             <td bgColor=#C0C0C0 >Chrome</td>
@@ -117,7 +117,7 @@ def generatehtml():
         sql = "insert into executer_result values('" + env.ExecuterDate + "','" + sheetname + "','" + testcasename + "','" + IE_status + "','" + Firefox_status + "','" + Chrome_status + "','" + Safari_status + "','" + Android_status + "','" + IOS_status + "','" + H5_Android_status + "','" + H5_IOS_status + "')"
         db.insert(sql)
 
-        result_tr = "<tr><td style="'text-align:left'" >" + tesecasedescription + "</td><td style="'text-align:left'" >" + sheetname + "</td><td style="'text-align:left'" >" + testcasename + "</td>"
+        result_tr = "<tr><td style="'text-align:left'" >" + tesecasedescription + "</td><td style="'text-align:left'" >" + sheetname + "</td>"
 
         # IE_status
         if IE_status == "Pass":

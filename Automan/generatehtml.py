@@ -183,6 +183,7 @@ def generatehtml():
         else:
             result_tr += "<td>" + H5_IOS_status + "</td>"
 
+        result_tr += "</tr>"
         result_trs += result_tr
 
     db.close()

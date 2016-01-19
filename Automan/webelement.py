@@ -618,8 +618,10 @@ class WebElement:
         # cls.__wait()
         WebDriverWait(env.driver, 10).until(lambda the_driver:
                                             the_driver.find_element(cls.by, cls.value).is_displayed())
+
         elements = env.driver.find_elements(cls.by, cls.value)
-        attr_value = elements[cls.index].get_attribute(attr)
+        rd = random.randint(0, len(elements)-1)
+        attr_value = elements[rd].get_attribute(attr)
         log.step_normal(u"Element [%s]: Attribute Value = [%s]." % (cls.__name__, attr_value))
         
         cls.__clearup()

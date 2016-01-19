@@ -14,7 +14,7 @@ def testcase_Web_AppropriateBrandFromGirl():
 
     PageImp.Page_HomeGuide.Page_HomeGuide.GoGirls.Click()
 
-    href = PageImp.Page_Home.Page_Home.AppropriateBrandFromGirl.GetAttribute("href")
+    href = PageImp.Page_Home.Page_Home.AppropriateBrand.GetAttribute("href")
 
     PublicImp.env.driver.get(href)
     sleep(5)

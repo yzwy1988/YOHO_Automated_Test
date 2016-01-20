@@ -22,16 +22,8 @@ def testcase_Web_AccordionStyleFromGirl():
     # 商品详情页面选择有库存商品加入购物车;
     P_Public_Imp.P_Web_GoodsDetails.P_Web_GoodsDetails.Web_GoodsDetails()
 
-    # 购物车-选择赠品
-    if PageImp.Page_ShopCart.Page_ShopCart.Mark_Zeng.IsExist():
-        PageImp.Page_ShopCart.Page_ShopCart.Select_Mark_Zeng.Click()
-        PageImp.Page_ShopCart.Page_ShopCart.Mark_Zeng_Select_Color.ClickList()
-        PageImp.Page_ShopCart.Page_ShopCart.Mark_Zeng_Select_Size.ClickList()
-        PageImp.Page_ShopCart.Page_ShopCart.Mark_Zeng_AddToCart.Click()
-        sleep(5)
+    # 调用公共模块:购物车列表,选择赠品/加价购
+    P_Public_Imp.P_Web_ShopCart.P_Web_ShopCart.Web_ShopCartList()
 
-    # 购物车列表页面点击去结算按钮
-    PageImp.Page_ShopCart.Page_ShopCart.ToSettleAccounts.Click()
-    sleep(5)
-
-
+    # 调用公共模块:购物车--确认订单页面;
+    # P_Public_Imp.P_Web_ShopCart.P_Web_ShopCart.Web_ConfirmOrder(2, 2)
